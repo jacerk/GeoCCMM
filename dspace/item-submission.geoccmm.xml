@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<geoccmm-submission profile="https://w3id.org/geoccmm/core/1.0" dspace="CLARIN-DSpace 2026.2">
+  <step-definitions>
+    <step-definition id="geoccmm-describe" mandatory="true">
+      <heading>geoccmm-describe</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+    <step-definition id="geoccmm-where" mandatory="true">
+      <heading>geoccmm-where</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+    <step-definition id="geoccmm-access" mandatory="true">
+      <heading>geoccmm-access</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+    <step-definition id="geoccmm-curator" mandatory="true">
+      <heading>geoccmm-curator</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+      <scope visibilityOutside="hidden">workflow</scope>
+    </step-definition>
+  </step-definitions>
+  <submission-process name="geoccmm">
+    <step id="geoccmm-describe" />
+    <step id="geoccmm-where" />
+    <step id="geoccmm-access" />
+    <step id="geoccmm-curator" />
+  </submission-process>
+</geoccmm-submission>

@@ -1,0 +1,2892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE input-forms SYSTEM "submission-forms.dtd">
+<input-forms>
+  <form-definitions>
+    <form name="geoccmm-describe">
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>title</dc-element>
+          <repeatable>false</repeatable>
+          <label>Název</label>
+          <input-type>onebox</input-type>
+          <hint>Název datové sady tak, jak ji mají ostatní citovat.</hint>
+          <required>Vyplňte pole Název.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier>abstract</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Abstrakt</label>
+          <input-type>textarea</input-type>
+          <hint>Co data obsahují, jaké místo a období popisují a k čemu se hodí.</hint>
+          <required>Vyplňte pole Abstrakt.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>author</dc-qualifier>
+          <repeatable>true</repeatable>
+          <label>Autoři</label>
+          <input-type>clarin-name</input-type>
+          <hint>Osoby nebo organizace, které data vytvořily, v pořadí pro citaci. U osoby vyplňte příjmení a křestní jméno. U organizace napište celý název do pole pro příjmení, bez čárky.</hint>
+          <required>Vyplňte pole Autoři.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>creator</dc-element>
+          <repeatable>true</repeatable>
+          <label>Identifikátory autorů</label>
+          <input-type complex-definition-ref="geoccmm-creatorDetails">complex</input-type>
+          <hint>Nepovinné. Jeden řádek pro každého autora s ORCID, ROR nebo afiliací. Jméno opište přesně tak, jak je v poli Autoři. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>language</dc-element>
+          <dc-qualifier>iso</dc-qualifier>
+          <repeatable>true</repeatable>
+          <label>Jazyk dat</label>
+          <input-type autocomplete-custom="json_static-iso_langs.json">autocomplete</input-type>
+          <hint>Jazyk obsahu dat: popisky, hodnoty atributů, dokumenty. Začněte psát anglický název jazyka (Czech, English). U čistě číselných dat napište „linguistic“ a zvolte položku bez jazykového obsahu (kód zxx).</hint>
+          <required>Vyplňte pole Jazyk dat.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>metadata</dc-element>
+          <dc-qualifier>language</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Jazyk metadat</label>
+          <input-type value-pairs-name="geoccmm-metadataLanguage">dropdown</input-type>
+          <default-value>ces</default-value>
+          <hint>Jazyk názvu, abstraktu a ostatních textů v tomto záznamu.</hint>
+          <required>Vyplňte pole Jazyk metadat.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>type</dc-element>
+          <repeatable>false</repeatable>
+          <label>Typ zdroje</label>
+          <input-type value-pairs-name="geoccmm-resourceType">dropdown</input-type>
+          <default-value>Dataset</default-value>
+          <hint>Jedna datová sada, nebo série datových sad podle stejné specifikace.</hint>
+          <required>Vyplňte pole Typ zdroje.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>date</dc-element>
+          <dc-qualifier>created</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Datum vytvoření</label>
+          <input-type>onebox</input-type>
+          <hint>Kdy data vznikla, ve tvaru RRRR-MM-DD.</hint>
+          <required>Vyplňte pole Datum vytvoření.</required>
+          <regex>^([0-9]{4}-[0-9]{2}-[0-9]{2})$</regex>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>date</dc-element>
+          <dc-qualifier>issued</dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Datum zveřejnění</label>
+          <input-type>onebox</input-type>
+          <hint>Ponechte „today“ a jako datum zveřejnění se použije den schválení, nebo zadejte RRRR-MM-DD.</hint>
+          <required>Vyplňte pole Datum zveřejnění.</required>
+          <regex>^(today|[0-9]{4}-[0-9]{2}-[0-9]{2})$</regex>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>version</dc-element>
+          <repeatable>false</repeatable>
+          <label>Verze</label>
+          <input-type>onebox</input-type>
+          <hint>Verze nebo vydání dat, např. 2.1 nebo 2024.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>revised</dc-element>
+          <repeatable>false</repeatable>
+          <label>Poslední revize</label>
+          <input-type>onebox</input-type>
+          <hint>Kdy byla data naposledy změněna, ve tvaru RRRR-MM-DD. Nejde o datum tohoto záznamu.</hint>
+          <required />
+          <regex>^([0-9]{4}-[0-9]{2}-[0-9]{2})$</regex>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>lineage</dc-element>
+          <repeatable>false</repeatable>
+          <label>Původ dat</label>
+          <input-type>textarea</input-type>
+          <hint>Jak data vznikla: zdroje, postup zpracování a známá omezení kvality.</hint>
+          <required>Vyplňte pole Původ dat.</required>
+        </field>
+      </row>
+    </form>
+    <form name="geoccmm-where">
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>theme</dc-element>
+          <repeatable>true</repeatable>
+          <label>Téma INSPIRE</label>
+          <input-type value-pairs-name="geoccmm-inspireTheme">dropdown</input-type>
+          <hint>Téma INSPIRE, do kterého data patří.</hint>
+          <required>Vyplňte pole Téma INSPIRE.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>topic</dc-element>
+          <repeatable>true</repeatable>
+          <label>Tematická kategorie ISO</label>
+          <input-type value-pairs-name="geoccmm-topicCategory">dropdown</input-type>
+          <hint>Obecná kategorie ISO 19115, podle které se hledá v katalozích.</hint>
+          <required>Vyplňte pole Tematická kategorie ISO.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>ford</dc-element>
+          <repeatable>true</repeatable>
+          <label>Obor (FORD)</label>
+          <input-type value-pairs-name="geoccmm-fordField">dropdown</input-type>
+          <hint>Obor podle klasifikace OECD FORD, který vyžaduje CCMM. Zvolte co nejpodrobnější vhodný obor.</hint>
+          <required>Vyplňte pole Obor (FORD).</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>subject</dc-element>
+          <repeatable>true</repeatable>
+          <label>Klíčová slova</label>
+          <input-type>tag</input-type>
+          <hint>Volná klíčová slova v jazyce metadat. Každé potvrďte klávesou Enter.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>keyword</dc-element>
+          <repeatable>true</repeatable>
+          <label>Klíčová slova ze slovníku</label>
+          <input-type complex-definition-ref="geoccmm-vocabularyKeywords">complex</input-type>
+          <hint>Termín z publikovaného slovníku, např. GEMET nebo EuroVoc, s názvem, webovou adresou a datem vydání slovníku. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>bbox</dc-element>
+          <repeatable>true</repeatable>
+          <label>Ohraničující obdélník</label>
+          <input-type complex-definition-ref="geoccmm-boundingBox">complex</input-type>
+          <hint>Území, které data pokrývají, ve stupních WGS 84 s desetinnou tečkou. Pokud území přechází 180. poledník, zadejte dva obdélníky. Nepište středníky.</hint>
+          <required>Vyplňte pole Ohraničující obdélník.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>coverage</dc-element>
+          <dc-qualifier>spatial</dc-qualifier>
+          <repeatable>true</repeatable>
+          <label>Názvy míst</label>
+          <input-type>onebox</input-type>
+          <hint>Názvy míst, která data pokrývají, např. Praha nebo Národní park Šumava.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>place</dc-element>
+          <repeatable>true</repeatable>
+          <label>Identifikátory míst</label>
+          <input-type>onebox</input-type>
+          <hint>Webové adresy stejných míst v rejstříku, např. RÚIAN, NUTS, GeoNames nebo Wikidata.</hint>
+          <required />
+          <regex>^((https?://|urn:)[^\s;]+)$</regex>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>period</dc-element>
+          <repeatable>true</repeatable>
+          <label>Období, které data popisují</label>
+          <input-type complex-definition-ref="geoccmm-periodCovered">complex</input-type>
+          <hint>Čas, který data popisují, ne kdy vznikla. Obě data ve tvaru RRRR-MM-DD. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>resolution</dc-element>
+          <repeatable>true</repeatable>
+          <label>Prostorové rozlišení</label>
+          <input-type complex-definition-ref="geoccmm-spatialResolution">complex</input-type>
+          <hint>V každém řádku vyplňte jedno pole: vzdálenost v metrech (10 pro mřížku 10 m), nebo měřítkové číslo (25000 pro 1 : 25 000). Ve všech řádcích použijte stejný druh. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>crs</dc-element>
+          <repeatable>true</repeatable>
+          <label>Souřadnicový systém</label>
+          <input-type>onebox</input-type>
+          <hint>Souřadnicový systém datových souborů jako webová adresa EPSG, např. http://www.opengis.net/def/crs/EPSG/0/5514 pro S-JTSK / Krovak East North.</hint>
+          <required />
+          <regex>^((https?://|urn:)[^\s;]+)$</regex>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>representation</dc-element>
+          <repeatable>true</repeatable>
+          <label>Prostorová reprezentace</label>
+          <input-type value-pairs-name="geoccmm-spatialRepresentation">dropdown</input-type>
+          <hint>Jak data ukládají geografii: vektorové prvky, mřížka, tabulka, nebo trojúhelníková síť.</hint>
+          <required />
+        </field>
+      </row>
+    </form>
+    <form name="geoccmm-access">
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>access</dc-element>
+          <repeatable>false</repeatable>
+          <label>Přístup</label>
+          <input-type value-pairs-name="geoccmm-accessCategory">dropdown</input-type>
+          <default-value>http://purl.org/coar/access_right/c_abf2</default-value>
+          <hint>Kdo může data získat. Musí odpovídat licenci a oprávněním k souborům.</hint>
+          <required>Vyplňte pole Přístup.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>limitation</dc-element>
+          <repeatable>true</repeatable>
+          <label>Omezení veřejného přístupu</label>
+          <input-type complex-definition-ref="geoccmm-publicAccessLimitation">complex</input-type>
+          <hint>Důvod omezení veřejného přístupu podle INSPIRE a krátké vysvětlení. U otevřených dat nechte prázdné; pak to znamená bez omezení. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>conditions</dc-element>
+          <repeatable>false</repeatable>
+          <label>Podmínky užití a poplatky</label>
+          <input-type>textarea</input-type>
+          <hint>Podmínky nad rámec licence, například poplatky nebo požadovaná citace. Pokud žádné nejsou, nechte prázdné.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>distribution</dc-element>
+          <repeatable>true</repeatable>
+          <label>Soubory ke stažení</label>
+          <input-type complex-definition-ref="geoccmm-downloads">complex</input-type>
+          <hint>Jeden řádek pro každý soubor ke stažení: krátký název, formát, verze formátu (je-li známa), velikost v bajtech a přímý odkaz, pokud existuje. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>service</dc-element>
+          <repeatable>true</repeatable>
+          <label>Mapové a datové služby</label>
+          <input-type complex-definition-ref="geoccmm-services">complex</input-type>
+          <hint>Webové služby, které tato data poskytují, např. WMS. Uveďte adresu služby, název a typ služby. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>relation</dc-element>
+          <repeatable>true</repeatable>
+          <label>Související zdroje</label>
+          <input-type complex-definition-ref="geoccmm-relatedResources">complex</input-type>
+          <hint>Odkazy na publikace, dokumentaci, zdrojová data nebo jiné verze a jejich vztah k této datové sadě. DOI přidělené jinde patří sem jako „Je totožný s“. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>funding</dc-element>
+          <repeatable>true</repeatable>
+          <label>Financování</label>
+          <input-type complex-definition-ref="geoccmm-funding">complex</input-type>
+          <hint>Kdo práci financoval: poskytovatel, jeho ROR nebo Crossref Funder ID, a číslo, název a webová adresa grantu, jsou-li známy. Nepište středníky.</hint>
+          <required />
+        </field>
+      </row>
+    </form>
+    <form name="geoccmm-curator">
+      <row>
+        <field>
+          <dc-schema>geoccmm</dc-schema>
+          <dc-element>conformity</dc-element>
+          <repeatable>false</repeatable>
+          <label>Soulad s INSPIRE</label>
+          <input-type complex-definition-ref="geoccmm-conformity">complex</input-type>
+          <hint>Zda data odpovídají nařízení Komise (EU) č. 1089/2010, s krátkým vysvětlením. Pokud to nebylo hodnoceno, nechte prázdné. Nepište středníky.</hint>
+          <required />
+          <visibility>workflow</visibility>
+        </field>
+      </row>
+    </form>
+  </form-definitions>
+  <form-value-pairs>
+    <value-pairs value-pairs-name="geoccmm-metadataLanguage" dc-term="metadata_language">
+      <pair>
+        <displayed-value>bulharština</displayed-value>
+        <stored-value>bul</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>čeština</displayed-value>
+        <stored-value>ces</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>dánština</displayed-value>
+        <stored-value>dan</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>němčina</displayed-value>
+        <stored-value>deu</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>řečtina</displayed-value>
+        <stored-value>ell</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>angličtina</displayed-value>
+        <stored-value>eng</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>španělština</displayed-value>
+        <stored-value>spa</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>estonština</displayed-value>
+        <stored-value>est</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>finština</displayed-value>
+        <stored-value>fin</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>francouzština</displayed-value>
+        <stored-value>fra</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>irština</displayed-value>
+        <stored-value>gle</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>chorvatština</displayed-value>
+        <stored-value>hrv</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>maďarština</displayed-value>
+        <stored-value>hun</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>italština</displayed-value>
+        <stored-value>ita</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>litevština</displayed-value>
+        <stored-value>lit</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>lotyština</displayed-value>
+        <stored-value>lav</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>maltština</displayed-value>
+        <stored-value>mlt</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>nizozemština</displayed-value>
+        <stored-value>nld</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>polština</displayed-value>
+        <stored-value>pol</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>portugalština</displayed-value>
+        <stored-value>por</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>rumunština</displayed-value>
+        <stored-value>ron</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>slovenština</displayed-value>
+        <stored-value>slk</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>slovinština</displayed-value>
+        <stored-value>slv</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>švédština</displayed-value>
+        <stored-value>swe</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-resourceType" dc-term="type">
+      <pair>
+        <displayed-value>Datová sada</displayed-value>
+        <stored-value>Dataset</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Série datových sad</displayed-value>
+        <stored-value>Dataset series</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-inspireTheme" dc-term="theme">
+      <pair>
+        <displayed-value>Stav ovzduší</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/ac</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Adresy</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/ad</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zemědělská a akvakulturní zařízení</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/af</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Správní oblasti/chráněná pásma/regulovaná území a jednotky podávající hlášení</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/am</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Správní jednotky</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/au</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Bioregiony</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/br</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Budovy</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/bu</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Katastrální parcely</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/cp</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zařízení pro sledování životního prostředí</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/ef</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Nadmořská výška</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/el</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Energetické zdroje</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/er</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Geologie</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/ge</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zeměpisné soustavy souřadnicových sítí</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/gg</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zeměpisné názvy</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/gn</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Stanoviště a biotopy</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/hb</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Lidské zdraví a bezpečnost</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/hh</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Vodopis</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/hy</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Krajinný pokryv</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/lc</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Využití území</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/lu</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zeměpisné meteorologické prvky</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/mf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Nerostné suroviny</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/mr</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Oblasti ohrožené přírodními riziky</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/nz</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zeměpisné oceánografické prvky</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/of</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ortofotosnímky</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/oi</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Rozložení obyvatelstva – demografie</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/pd</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Výrobní a průmyslová zařízení</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/pf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Chráněná území</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/ps</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Souřadnicové referenční systémy</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/rs</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Rozložení druhů</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/sd</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Půda</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/so</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Mořské oblasti</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/sr</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Statistické jednotky</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/su</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Dopravní sítě</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/tn</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Veřejné služby a služby veřejné správy</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/theme/us</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-topicCategory" dc-term="topic">
+      <pair>
+        <displayed-value>Zemědělství</displayed-value>
+        <stored-value>farming</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Biota</displayed-value>
+        <stored-value>biota</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Hranice</displayed-value>
+        <stored-value>boundaries</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Klimatologie/meteorologie/atmosféra</displayed-value>
+        <stored-value>climatologyMeteorologyAtmosphere</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Hospodářství</displayed-value>
+        <stored-value>economy</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Nadmořská výška</displayed-value>
+        <stored-value>elevation</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Životní prostředí</displayed-value>
+        <stored-value>environment</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Geograficko-vědecké informace</displayed-value>
+        <stored-value>geoscientificInformation</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zdraví</displayed-value>
+        <stored-value>health</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Obrazová data/základní mapy/pokryv Země</displayed-value>
+        <stored-value>imageryBaseMapsEarthCover</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zpravodajské/vojenské informace</displayed-value>
+        <stored-value>intelligenceMilitary</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Vnitrozemské vodní plochy</displayed-value>
+        <stored-value>inlandWaters</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Poloha</displayed-value>
+        <stored-value>location</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Oceány</displayed-value>
+        <stored-value>oceans</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Plánování/katastr</displayed-value>
+        <stored-value>planningCadastre</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Společnost</displayed-value>
+        <stored-value>society</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Stavby</displayed-value>
+        <stored-value>structure</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Doprava</displayed-value>
+        <stored-value>transportation</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Veřejné služby/komunikace</displayed-value>
+        <stored-value>utilitiesCommunication</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-fordField" dc-term="ford">
+      <pair>
+        <displayed-value>10000 Přírodní vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10100 Matematika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10101 Čistá matematika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10100/10101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10102 Aplikovaná matematika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10100/10102</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10103 Pravděpodobnost a statistika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10100/10103</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10200 Počítačové vědy a informační věda</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10200</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10201 Počítačové vědy, informační věda, bioinformatika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10200/10201</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10300 Fyzikální vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10301 Atomová fyzika, molekulární a chemická fyzika (fyzika atomů a molekul včetně srážek, interakcí s radiací, magnetická rezonance, Mössbauerův jev)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10301</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10302 Fyzika kondenzovaných látek (zahrnuje fyziku pevných látek, supravodivost)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10302</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10303 Fyzika částic</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10303</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10304 Atomová fyzika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10304</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10305 Fyzika kapalin a plazmatu (zahrnuje fyziku povrchů)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10305</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10306 Optika (zahrnuje laserovou optiku, kvantovou optiku)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10306</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10307 Akustika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10307</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10308 Astronomie (zahrnuje astrofyziku, vědu o vesmíru)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10300/10308</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10400 Chemické vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10401 Organická chemie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400/10401</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10402 Anorganická a jaderná chemie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400/10402</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10403 Fyzikální chemie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400/10403</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10404 Chemie polymerů</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400/10404</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10405 Elektrochemie (zahrnuje suché články, baterie, palivové články, korozní kovy, elektrolýzu)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400/10405</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10406 Analytická chemie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10400/10406</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10500 Vědy o Zemi a související environmentální vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10501 Hydrologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10501</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10502 Oceánografie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10502</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10503 Vodní zdroje</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10503</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10504 Mineralogie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10504</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10505 Geologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10505</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10506 Paleontologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10506</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10507 Vulkanologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10507</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10508 Fyzická geografie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10508</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10509 Meteorologie, vědy o atmosféře</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10509</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10510 Výzkum klimatu</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10510</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10511 Environmentální vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10500/10511</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10600 Biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10601 Buněčná biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10601</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10602 Biologie (teoretická, matematická, termální, kryobiologie, biologický rytmus), evoluční biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10602</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10603 Genetika a dědičnost</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10603</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10604 Reprodukční biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10604</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10605 Vývojová biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10605</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10606 Mikrobiologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10606</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10607 Virologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10607</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10608 Biochemie a molekulární biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10608</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10609 Biochemické výzkumné metody</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10609</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10610 Biofyzika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10610</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10611 Botanika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10611</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10612 Mykologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10612</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10613 Zoologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10613</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10614 Behaviorální biologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10614</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10615 Ornitologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10615</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10616 Entomologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10616</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10617 Mořská biologie, sladkovodní biologie, limnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10617</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10618 Ekologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10618</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10619 Ochrana biodiverzity</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10619</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10620 Ostatní biologické vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10600/10620</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>10700 Ostatní přírodní vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000/10700</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20000 Technické vědy, inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20100 Stavební inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20101 Stavební inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20100/20101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20102 Konstrukční inženýrství, výstavba měst</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20100/20102</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20103 Architektura</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20100/20103</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20104 Dopravní inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20100/20104</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20200 Elektrotechnika, elektronika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20201 Elektrotechnika, elektronika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200/20201</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20202 Sdělovací technika a systémy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200/20202</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20203 Telekomunikace</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200/20203</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20204 Robotika a automatické řízení</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200/20204</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20205 Automatizace a kontrola systémů</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200/20205</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20206 Počítačový hardware a architektura</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20200/20206</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20300 Strojní inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20301 Strojní inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300/20301</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20302 Aplikovaná mechanika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300/20302</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20303 Termodynamika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300/20303</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20304 Letecké inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300/20304</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20305 Jaderné inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300/20305</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20306 Audio inženýrství, analýzy spolehlivosti</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20300/20306</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20400 Chemické inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20400</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20401 Chemické inženýrství (rostliny, výrobky)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20400/20401</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20402 Chemické procesní inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20400/20402</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20500 Materiálové inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20501 Materiálové inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500/20501</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20502 Papír a dřevo</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500/20502</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20503 Textilie (zahrnuje umělá barviva, barvy, vlákna)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500/20503</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20504 Keramika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500/20504</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20505 Kompozity (zahrnuje lamináty, vyztužené plasty, cermety, kombinovaná přírodní a umělá vlákna a tkaniny, plněné kompozity)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500/20505</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20506 Nátěry a fólie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20500/20506</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20600 Lékařské inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20600</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20601 Lékařské inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20600/20601</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20602 Lékařské laboratorní technologie (laboratorní analýzy vzorků, diagnostické technologie)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20600/20602</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20700 Environmentální inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20701 Environmentální a geologické inženýrství, geotechnika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20701</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20702 Ropné inženýrství (paliva, oleje)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20702</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20703 Těžba a zpracování minerálů</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20703</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20704 Energie a paliva</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20704</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20705 Dálkový průzkum Země</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20705</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20706 Námořní inženýrství, mořská plavidla</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20706</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20707 Oceánské inženýrství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20700/20707</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20800 Environmentální biotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20800</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20801 Environmentální biotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20800/20801</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20802 Bioléčba, diagnostické biotechnologie (zlomky DNA a biosenzory) v environmentálním managementu</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20800/20802</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20803 Environmentální biotechnologie související s etikou</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20800/20803</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20900 Průmyslové biotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20900</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20901 Průmyslové biotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20900/20901</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20902 Technologie biovýroby (průmyslové procesy spoléhající se na biologické činitele k řízení procesů), biokatalyzátory, fermentace</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20900/20902</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>20903 Biovýrobky (výrobky, které jsou vyráběny s použitím biologických materiálů jako výchozích produktů), biomateriály, bioplasty, biopaliva, bioodvozené celkové a čisté chemikálie, bioodvozené nové materiály</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/20900/20903</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>21000 Nanotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/21000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>21001 Nanomateriály (výroba a vlastnosti)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/21000/21001</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>21002 Nanoprocesy (aplikace v nanoměřítku)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/21000/21002</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>21100 Ostatní inženýrství a technologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/21100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>21101 Výrobky potravinářského průmyslu a nápoje</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/20000/21100/21101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30000 Lékařské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30100 Základní medicína</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30101 Genetika člověka</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30102 Imunologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30102</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30103 Neurovědy (zahrnuje psychofyziologii)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30103</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30104 Farmakologie a farmacie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30104</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30105 Fyziologie (zahrnující cytologii)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30105</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30106 Anatomie a morfologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30106</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30107 Lékařská chemie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30107</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30108 Toxikologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30108</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30109 Patologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30100/30109</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30200 Klinická medicína</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30201 Srdeční a kardiovaskulární systémy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30201</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30202 Endokrinologie a metabolismus (zahrnuje cukrovku, hormony)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30202</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30203 Dýchací ústrojí</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30203</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30204 Onkologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30204</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30205 Hematologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30205</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30206 Otorinolaryngologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30206</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30207 Oftalmologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30207</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30208 Stomatologie, ústní chirurgie a lékařství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30208</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30209 Pediatrie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30209</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30210 Klinická neurologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30210</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30211 Ortopedie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30211</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30212 Chirurgie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30212</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30213 Transplantace</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30213</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30214 Porodnictví a gynekologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30214</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30215 Psychiatrie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30215</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30216 Dermatologie a pohlavní nemoci</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30216</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30217 Urologie a nefrologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30217</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30218 Všeobecné a vnitřní lékařství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30218</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30219 Gastroenterologie a hepatologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30219</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30220 Andrologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30220</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30221 Urgentní medicína a pohotovostní medicína</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30221</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30223 Anesteziologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30223</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30224 Radiologie, nukleární medicína a lékařské zobrazování</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30224</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30225 Alergologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30225</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30226 Revmatologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30226</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30227 Geriatrie a gerontologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30227</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30229 Celostní a alternativní medicína (alternativní praktické systémy)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30229</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30230 Ostatní klinická lékařská témata</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30200/30230</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30300 Zdravotní vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30301 Sociální biolékařské vědy (plánované rodičovství, sexuální zdraví, psychoonkologie, politické a sociální jevy biolékařského výzkumu)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30301</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30302 Epidemiologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30302</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30303 Infekční onemocnění</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30303</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30304 Veřejné a environmentální zdraví</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30304</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30305 Ochrana zdraví při práci</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30305</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30306 Sport a fitness</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30306</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30307 Ošetřovatelství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30307</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30308 Výživa, nauka o dietě</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30308</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30309 Tropické lékařství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30309</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30310 Parazitologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30310</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30311 Lékařská etika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30311</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30312 Zneužívání návykových látek</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30300/30312</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30400 Lékařské biotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30400</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30401 Biotechnologie související se zdravím</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30400/30401</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30402 Technologie zahrnující manipulace s buňkami, tkáněmi, orgány nebo celými organismy (asistovaná reprodukce)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30400/30402</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30403 Technologie zahrnující identifikace činností DNA, proteinů a enzymů a jejich vlivy na nápor nemocí a zachování pocitů zdraví (genová diagnostika a terapeutické zákroky, farmakogenomika, genová terapeutika)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30400/30403</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30404 Biomateriály (související s lékařskými implantáty, přístroji, senzory)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30400/30404</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30405 Lékařské biotechnologie související s etikou</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30400/30405</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30500 Ostatní lékařské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30500</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30501 Soudní lékařství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30500/30501</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>30502 Ostatní lékařské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/30000/30500/30502</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40000 Zemědělské a veterinární vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40100 Zemědělství, lesnictví, rybářství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40101 Zemědělství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100/40101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40102 Lesnictví</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100/40102</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40103 Rybářství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100/40103</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40104 Půdoznalství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100/40104</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40105 Zahradnictví, vinařství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100/40105</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40106 Agronomie, šlechtění a ochrana rostlin</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40100/40106</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40200 Vědy o zvířatech a mléce</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40200</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40201 Vědy o zvířatech a mléce</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40200/40201</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40202 Domácí zvířata</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40200/40202</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40203 Chovatelství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40200/40203</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40300 Veterinární věda</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40300</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40301 Veterinární věda</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40300/40301</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40400 Zemědělské biotechnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40400</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40401 Zemědělské biotechnologie a biotechnologie potravin</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40400/40401</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40402 Technologie genetických modifikací (plodiny a dobytek), klonování dobytka, ukazatele selekce, diagnostika (zlomky DNA a biosenzory pro brzkou/přesnou detekci nemocí), technologie zpracování biomasy, biohospodářství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40400/40402</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40403 Zemědělské biotechnologie související s etikou</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40400/40403</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>40500 Ostatní zemědělské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/40000/40500</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50000 Společenské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50100 Psychologie a kognitivní věda</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50101 Psychologie (zahrnuje vztahy mezi člověkem a strojem)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50100/50101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50102 Speciální psychologie (zahrnuje terapii pro učení, řeč, poslech, zrakové a jiné fyzické a mentální handicapy)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50100/50102</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50103 Kognitivní vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50100/50103</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50200 Ekonomie a podnikání</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50201 Ekonomická teorice</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200/50201</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50202 Aplikovaná ekonomie, ekonometrie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200/50202</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50203 Pracovní vztahy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200/50203</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50204 Podnikání a management</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200/50204</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50205 Účetnictví</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200/50205</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50206 Finance</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50200/50206</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50300 Vzdělávání</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50300</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50301 Všeobecné vzdělávání (zahrnuje výcvik, pedagogiku, didaktiku, vzdělávací systémy)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50300/50301</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50302 Speciální vzdělávání (pro nadané osoby, pro osoby s poruchami učení)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50300/50302</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50400 Sociologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50400</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50401 Sociologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50400/50401</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50402 Demografie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50400/50402</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50403 Sociální témata (studie žen a pohlaví, sociální problémy, studie rodin, sociální práce)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50400/50403</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50404 Antropologie, etnologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50400/50404</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50500 Právo</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50500</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50501 Právo</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50500/50501</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50502 Kriminologie, penologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50500/50502</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50600 Politologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50600</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50601 Politologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50600/50601</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50602 Veřejná správa</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50600/50602</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50603 Teorie organizace</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50600/50603</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50700 Sociální a ekonomická geografie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50701 Kulturní a ekonomická geografie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50701</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50702 Urbanismus (plánování a rozvoj)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50702</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50703 Plánování dopravy a sociální hlediska dopravy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50703</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50704 Environmentální vědy (sociální hlediska)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50704</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50800 Média a komunikace</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50800</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50801 Žurnalistika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50800/50801</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50802 Mediální a sociokulturní komunikace</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50800/50802</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50803 Informační věda (sociální aspekty)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50800/50803</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50804 Knihovnictví</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50800/50804</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50900 Ostatní společenské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50900</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50901 Ostatní společenské vědy</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50900/50901</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>50902 Společenské vědy interdisciplinární</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50900/50902</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60000 Humanitní vědy a umění</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60100 Historie a archeologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60100</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60101 Historie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60100/60101</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60102 Archeologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60100/60102</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60200 Jazyky a literatura</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60201 Všeobecné jazykové studie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200/60201</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60202 Specifické jazyky</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200/60202</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60203 Lingvistika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200/60203</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60204 Všeobecné studie literatury</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200/60204</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60205 Teorie literatury</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200/60205</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60206 Specifická literatura</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60200/60206</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60300 Filozofie, etika a náboženství</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60300</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60301 Filozofie, dějiny a filozofie vědy a techniky</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60300/60301</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60302 Etika (vyjma etiky související s příslušnými kategoriemi)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60300/60302</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60303 Teologie</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60300/60303</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60304 Religionistika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60300/60304</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60400 Umění (umění, dějiny umění, múzická umění, hudba)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60400</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60401 Umění, dějiny umění</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60400/60401</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60402 Architektonický design</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60400/60402</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60403 Múzická umění (muzikologie, divadelní věda, dramaturgie)</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60400/60403</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60404 Folkloristika</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60400/60404</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60405 Film, rádio a televize</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60400/60405</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>60500 Ostatní humanitní vědy a obory umění</displayed-value>
+        <stored-value>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/60000/60500</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-spatialRepresentation" dc-term="representation">
+      <pair>
+        <displayed-value>Vektor</displayed-value>
+        <stored-value>vector</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Mřížka (rastr)</displayed-value>
+        <stored-value>grid</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Tabulka</displayed-value>
+        <stored-value>textTable</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Nepravidelná trojúhelníková síť (TIN)</displayed-value>
+        <stored-value>tin</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-accessCategory" dc-term="access">
+      <pair>
+        <displayed-value>Otevřený přístup</displayed-value>
+        <stored-value>http://purl.org/coar/access_right/c_abf2</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Odložený přístup (embargo)</displayed-value>
+        <stored-value>http://purl.org/coar/access_right/c_f1cf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Omezený přístup</displayed-value>
+        <stored-value>http://purl.org/coar/access_right/c_16ec</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Pouze metadata</displayed-value>
+        <stored-value>http://purl.org/coar/access_right/c_14cb</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-publicAccessLimitation-code" dc-term="limitation">
+      <pair>
+        <displayed-value>Bez omezení</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. a): důvěrnost jednání orgánů veřejné moci</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1a</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. b): mezinárodní vztahy, veřejná bezpečnost nebo obrana státu</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1b</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. c): průběh soudního řízení, spravedlivý proces, trestní nebo kárné vyšetřování</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1c</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. d): důvěrnost obchodních nebo průmyslových informací</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. e): práva duševního vlastnictví</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. f): důvěrnost osobních údajů</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1f</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. g): ochrana osoby, která informace poskytla dobrovolně</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1g</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Čl. 13 odst. 1 písm. h): ochrana životního prostředí, např. lokality vzácných druhů</displayed-value>
+        <stored-value>http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1h</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-downloads-format" dc-term="distribution">
+      <pair>
+        <displayed-value>7z</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/7Z</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>AAB</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/AAB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>AAC</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/AAC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>AKN4EU file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/AKN4EU</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>AKN4EU LEG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/AKN4EU_LEG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>APK</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/APK</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>AppX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/APPX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>APRX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/APRX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ARC</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ArcInfo coverage</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARCINFO_COV</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ARC GZ</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARC_GZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ARFF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARFF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ARJ</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARJ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Arrow file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARROW_FILE</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Arrow stream</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ARROW_STREAM</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Atom Feed</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ATOM</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Amazon Kindle eBook</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/AZW</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Binary Data</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/BIN</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>BITS XML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/BITS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Bitmap Image File</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/BMP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>BWF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/BWF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>bzip2</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/BZIP2</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>COG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/COG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>CSS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/CSS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>CSV</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/CSV</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DAPK</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DAPK</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DBF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DBF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DCR File</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DCR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>deb</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DEB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DGN</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DGN</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DMG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DMG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Oracle Dump</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DMP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Word DOC</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DOC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Word DOCX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DOCX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SGML DTD</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DTD_SGML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XML DTD</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DTD_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DwC-A</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DWCA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DWG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DWG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>DXF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/DXF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>E00</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/E00</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>EAR</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/EAR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ECW</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ECW</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>eForms XML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/EFORMS_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Encapsulated Postscript</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/EPS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>EPUB</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/EPUB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ETSI TSL</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ETSI_TSL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ETSI signature validation report</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ETSI_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>EXE</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/EXE</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Formex 4</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/FMX4</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>FMX4 ZIP</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/FMX4_ZIP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Esri File Geodatabase</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GDB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GeoJSON</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GEOJSON</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GeoParquet</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GEOPARQUET</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GeoTIFF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GEOTIFF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GIF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GIF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zipped GML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GMZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GeoPackage</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GPKG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GPX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GPX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Esri binary grid</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GRID</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Esri ASCII grid</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GRID_ASCII</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GTFS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GTFS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>GNU zip</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/GZIP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>HDF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/HDF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>HDT</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/HDT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>HTML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/HTML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>HTML5</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/HTML5</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>HTML simplified</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/HTML_SIMPL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ICalendar</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ICS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>IMMC XML message</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/IMMC_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>INDD</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/INDD</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>IPA</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/IPA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ISO image</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ISO</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zipped ISO image</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ISO_ZIP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JAR</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JAR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JATS XML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JATS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JPEG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JPEG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JPEG 2000</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JPEG2000</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JavaScript</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JSON</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JSON</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>JSON-LD</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/JSON_LD</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>KML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/KML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>KMZ</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/KMZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>LASer file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LAS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Compressed LAS file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LAZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>LegalHTML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LEGALHTML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>LHA</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LHA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Layer package</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LPK</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>lzip</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LZIP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>lzma</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LZMA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>lzo</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/LZO</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ArcGIS Map Preview</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MAP_PRVW</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ArcGIS Map Service</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MAP_SRVC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Markdown</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MARKDOWN</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MathML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MATHML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MATLAB MAT</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MATLAB_MAT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MBOX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MBOX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MDB</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MDB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>METS XML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/METS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>METS package</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/METS_ZIP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MHTML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MHTML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MIF/MID</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MIF_MID</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Mobipocket eBook</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MOBI</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MOP</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MOP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MOV</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MOV</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MP3</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MP3</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MPEG-2</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MPEG2</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MPEG-4</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MPEG4</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MPEG-4 AVC</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MPEG4_AVC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MrSID</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MRSID</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>HTTP Message</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MSG_HTTP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MSI</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MSI</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MXD</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/MXD</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>N3</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/N3</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>NetCDF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/NETCDF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OAPK</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/OAPK</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Octet Stream</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/OCTET</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OpenDocument Database</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OpenDocument Chart</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ODF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OpenDocument Image</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ODP</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ODS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ODT</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ODT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OGCFeat</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/OGCFEAT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Provisional data</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/OP_DATPRO</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OVF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/OVF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OWL</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/OWL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Parquet</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PARQUET</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF1X</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDF1X</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-1a</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA1A</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-1b</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA1B</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-2a</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA2A</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-2b</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA2B</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-3</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA3</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-3a</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA3A</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-3b</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA3B</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/A-3u</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFA3U</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/UA</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFUA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/X</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/X-1a</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFX1A</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/X-2a</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFX2A</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PDF/X-4</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PDFX4</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Perl script</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PNG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PNG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PowerPoint Slide Show</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PPS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PowerPoint PPSX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PPSX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PowerPoint PPT</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PPT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PowerPoint PPTX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PPTX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PSD</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PSD</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PWP</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/PWP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>QGS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/QGS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RAR</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RAR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RData</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDATA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDFa</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDFA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF N-Quads</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_N_QUADS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF N-Triples</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF Thrift</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_THRIFT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF TriG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_TRIG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF TriX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_TRIX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF Turtle</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RDF XML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RDF_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Esri REST</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/REST</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RPM</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RPM</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RSS feed</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RSS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>RTF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/RTF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SAS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SAS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>sb3</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SB3</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Schematron</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SCH</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XML schema</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SCHEMA_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SDMX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SDMX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SGML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SGML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Esri Shape</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SHP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SKOS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SKOS_XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SPARQL</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SPARQLQ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SPARQL results</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SPARQLQRES</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SPSS SAV</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SPSS_SAV</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SQL</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SQL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Stata DTA</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/STATA_DTA</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>StL</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/STL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SVG</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SVG</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>SWM</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/SWM</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MapInfo TAB file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TAB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>MapInfo TAB raster file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TAB_RSTR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TAR</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TAR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TAR GZ</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TAR_GZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TAR XZ</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TAR_XZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Thrift binary</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/THRIFT_BINARY</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Thrift compact</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/THRIFT_COMPACT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Thrift JSON</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/THRIFT_JSON</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TIFF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TIFF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TIFF FX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TIFF_FX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TMX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TMX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>TSV</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TSV</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Plain text</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/TXT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ungen</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/UNGEN</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>VCF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/VCF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WAR</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WAR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WARC</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WARC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WARC GZ</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WARC_GZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WAV</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WAV</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WCS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WCS_SRVC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WebP</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WEBP</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WFS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WFS_SRVC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WIM</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WIM</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WMS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WMS_SRVC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>WMTS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WMTS_SRVC</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>World file</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/WORLD</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XHTML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XHTML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XHTML5</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XHTML5</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XHTML simplified</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XHTML_SIMPL</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XLIFF</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XLIFF</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Excel XLS</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XLS</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XLSB</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XLSB</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XLSM</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XLSM</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Excel XLSX</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XLSX</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XSL-FO</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XSLFO</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XSLT</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XSLT</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>XYZ Chemical File</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XYZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>xz</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/XZ</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>YAML</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/YAML</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Z</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/Z</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Zarr</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ZARR</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ZIP</displayed-value>
+        <stored-value>http://publications.europa.eu/resource/authority/file-type/ZIP</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-services-protocol" dc-term="service">
+      <pair>
+        <displayed-value>OGC Web Map Service (WMS, mapová služba)</displayed-value>
+        <stored-value>http://www.opengis.net/def/serviceType/ogc/wms</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OGC Web Map Tile Service (WMTS, dlaždicová mapová služba)</displayed-value>
+        <stored-value>http://www.opengis.net/def/serviceType/ogc/wmts</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OGC Web Feature Service (WFS, služba pro vektorová data)</displayed-value>
+        <stored-value>http://www.opengis.net/def/serviceType/ogc/wfs</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OGC Web Coverage Service (WCS, služba pro rastrová data)</displayed-value>
+        <stored-value>http://www.opengis.net/def/serviceType/ogc/wcs</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OGC Sensor Observation Service (SOS, služba pro data senzorů)</displayed-value>
+        <stored-value>http://www.opengis.net/def/serviceType/ogc/sos</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>OGC API-Features</displayed-value>
+        <stored-value>http://www.opengis.net/def/interface/ogcapi-features</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>ATOM Syndication Format (stahovací kanál)</displayed-value>
+        <stored-value>https://tools.ietf.org/html/rfc4287</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-relatedResources-type" dc-term="relation">
+      <pair>
+        <displayed-value>je citována v</displayed-value>
+        <stored-value>IsCitedBy</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>cituje</displayed-value>
+        <stored-value>Cites</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je doplňkem k</displayed-value>
+        <stored-value>IsSupplementTo</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je doplněna o</displayed-value>
+        <stored-value>IsSupplementedBy</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je novou verzí</displayed-value>
+        <stored-value>IsNewVersionOf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je předchozí verzí</displayed-value>
+        <stored-value>IsPreviousVersionOf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je verzí</displayed-value>
+        <stored-value>IsVersionOf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>má verzi</displayed-value>
+        <stored-value>HasVersion</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je součástí</displayed-value>
+        <stored-value>IsPartOf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>obsahuje část</displayed-value>
+        <stored-value>HasPart</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je zmíněna v</displayed-value>
+        <stored-value>IsReferencedBy</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>odkazuje na</displayed-value>
+        <stored-value>References</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je dokumentována v</displayed-value>
+        <stored-value>IsDocumentedBy</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>dokumentuje</displayed-value>
+        <stored-value>Documents</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je odvozena z</displayed-value>
+        <stored-value>IsDerivedFrom</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je zdrojem pro</displayed-value>
+        <stored-value>IsSourceOf</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>je totožná s</displayed-value>
+        <stored-value>IsIdenticalTo</stored-value>
+      </pair>
+    </value-pairs>
+    <value-pairs value-pairs-name="geoccmm-conformity-degree" dc-term="conformity">
+      <pair>
+        <displayed-value>Nehodnoceno</displayed-value>
+        <stored-value>notEvaluated</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ve shodě</displayed-value>
+        <stored-value>conformant</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Není ve shodě</displayed-value>
+        <stored-value>notConformant</stored-value>
+      </pair>
+    </value-pairs>
+  </form-value-pairs>
+  <form-complex-definitions>
+    <definition name="geoccmm-creatorDetails">
+      <input name="name" input-type="onebox" label="Jméno jako v poli Autoři" required="true" regex="^([^;]{1,200})$" />
+      <input name="identifier" input-type="onebox" label="ORCID (osoba) nebo ROR (organizace)" required="false" regex="^(https://(orcid\.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]|ror\.org/0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}))$" />
+      <input name="affiliation" input-type="onebox" label="Afiliace (jen u osob)" required="false" regex="^([^;]{1,200})$" />
+      <input name="affiliationIdentifier" input-type="onebox" label="ROR afiliace" required="false" regex="^(https://ror\.org/0[a-hj-km-np-tv-z0-9]{6}[0-9]{2})$" />
+    </definition>
+    <definition name="geoccmm-vocabularyKeywords">
+      <input name="term" input-type="onebox" label="Termín" required="true" regex="^([^;]{1,200})$" />
+      <input name="termIri" input-type="onebox" label="Adresa termínu (IRI)" required="false" regex="^((https?://|urn:)[^\s;]{1,192})$" />
+      <input name="vocabulary" input-type="onebox" label="Název slovníku" required="true" regex="^([^;]{1,200})$" />
+      <input name="vocabularyIri" input-type="onebox" label="Adresa slovníku (IRI)" required="true" regex="^((https?://|urn:)[^\s;]{1,192})$" />
+      <input name="vocabularyDate" input-type="onebox" label="Datum slovníku (RRRR-MM-DD)" required="true" regex="^([0-9]{4}-[0-9]{2}-[0-9]{2})$" />
+    </definition>
+    <definition name="geoccmm-boundingBox">
+      <input name="west" input-type="onebox" label="Západní délka" required="true" regex="^(-?[0-9]{1,3}(\.[0-9]{1,15})?)$" />
+      <input name="east" input-type="onebox" label="Východní délka" required="true" regex="^(-?[0-9]{1,3}(\.[0-9]{1,15})?)$" />
+      <input name="south" input-type="onebox" label="Jižní šířka" required="true" regex="^(-?[0-9]{1,2}(\.[0-9]{1,15})?)$" />
+      <input name="north" input-type="onebox" label="Severní šířka" required="true" regex="^(-?[0-9]{1,2}(\.[0-9]{1,15})?)$" />
+    </definition>
+    <definition name="geoccmm-periodCovered">
+      <input name="start" input-type="onebox" label="Od" required="true" regex="^([0-9]{4}-[0-9]{2}-[0-9]{2})$" />
+      <input name="end" input-type="onebox" label="Do" required="true" regex="^([0-9]{4}-[0-9]{2}-[0-9]{2})$" />
+    </definition>
+    <definition name="geoccmm-spatialResolution">
+      <input name="distance" input-type="onebox" label="Vzdálenost v metrech" required="false" regex="^([0-9]{1,12}(\.[0-9]{1,12})?)$" />
+      <input name="scale" input-type="onebox" label="Měřítkové číslo" required="false" regex="^([0-9]{1,12})$" />
+    </definition>
+    <definition name="geoccmm-publicAccessLimitation">
+      <input name="code" input-type="dropdown" label="Důvod" required="true" value-pairs-name="geoccmm-publicAccessLimitation-code" />
+      <input name="explanation" input-type="onebox" label="Vysvětlení" required="false" regex="^([^;]{1,200})$" />
+    </definition>
+    <definition name="geoccmm-downloads">
+      <input name="name" input-type="onebox" label="Název" required="true" regex="^([^;]{1,200})$" />
+      <input name="format" input-type="dropdown" label="Formát souboru" required="true" value-pairs-name="geoccmm-downloads-format" />
+      <input name="formatVersion" input-type="onebox" label="Verze formátu" required="false" regex="^([^;]{1,200})$" />
+      <input name="bytes" input-type="onebox" label="Velikost v bajtech" required="true" regex="^([0-9]{1,18})$" />
+      <input name="url" input-type="onebox" label="Přímý odkaz" required="false" regex="^(https?://[^\s;]{1,192})$" />
+    </definition>
+    <definition name="geoccmm-services">
+      <input name="url" input-type="onebox" label="Adresa služby" required="true" regex="^(https?://[^\s;]{1,192})$" />
+      <input name="name" input-type="onebox" label="Název" required="true" regex="^([^;]{1,200})$" />
+      <input name="protocol" input-type="dropdown" label="Typ služby" required="true" value-pairs-name="geoccmm-services-protocol" />
+    </definition>
+    <definition name="geoccmm-relatedResources">
+      <input name="identifier" input-type="onebox" label="Odkaz nebo identifikátor (IRI)" required="true" regex="^((https?://|urn:)[^\s;]{1,192})$" />
+      <input name="type" input-type="dropdown" label="Tato datová sada ..." required="true" value-pairs-name="geoccmm-relatedResources-type" />
+    </definition>
+    <definition name="geoccmm-funding">
+      <input name="funder" input-type="onebox" label="Poskytovatel" required="true" regex="^([^;]{1,200})$" />
+      <input name="funderIdentifier" input-type="onebox" label="ROR nebo Crossref Funder ID poskytovatele" required="false" regex="^(https://(ror\.org/0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}|doi\.org/10\.13039/[0-9]{1,20}))$" />
+      <input name="awardNumber" input-type="onebox" label="Číslo grantu" required="false" regex="^([^;]{1,200})$" />
+      <input name="awardTitle" input-type="onebox" label="Název grantu" required="false" regex="^([^;]{1,200})$" />
+      <input name="awardUri" input-type="onebox" label="Webová adresa grantu" required="false" regex="^(https?://[^\s;]{1,192})$" />
+    </definition>
+    <definition name="geoccmm-conformity">
+      <input name="degree" input-type="dropdown" label="Výsledek" required="true" value-pairs-name="geoccmm-conformity-degree" />
+      <input name="explanation" input-type="onebox" label="Vysvětlení" required="false" regex="^([^;]{1,200})$" />
+    </definition>
+  </form-complex-definitions>
+</input-forms>

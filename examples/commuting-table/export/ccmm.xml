@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ccmm:dataset xmlns:ccmm="https://schema.ccmm.cz/research-data/1.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:geoccmm="https://w3id.org/geoccmm/core/">
+  <ccmm:iri>https://doi.org/10.5072/geoccmm-vyjizdka-2021</ccmm:iri>
+  <ccmm:metadata_identification>
+    <ccmm:iri>urn:uuid:9c4e1f20-7b3a-4c55-8e0d-61f2a9b7c3d8</ccmm:iri>
+    <ccmm:language>
+      <ccmm:iri>http://publications.europa.eu/resource/authority/language/CES</ccmm:iri>
+    </ccmm:language>
+    <ccmm:qualified_relation>
+      <ccmm:relation>
+        <ccmm:organization>
+          <ccmm:name>Example University, Map and Data Centre</ccmm:name>
+          <ccmm:contact_point>
+            <ccmm:email>data@example.org</ccmm:email>
+          </ccmm:contact_point>
+        </ccmm:organization>
+      </ccmm:relation>
+      <ccmm:role>
+        <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/AgentRole/Contributor/DataManager</ccmm:iri>
+      </ccmm:role>
+    </ccmm:qualified_relation>
+    <ccmm:date_updated>2026-10-29</ccmm:date_updated>
+    <ccmm:conforms_to_standard>
+      <ccmm:iri>https://model.ccmm.cz/research-data/1.1.0</ccmm:iri>
+    </ccmm:conforms_to_standard>
+    <ccmm:conforms_to_standard>
+      <ccmm:iri>https://w3id.org/geoccmm/core/1.0</ccmm:iri>
+    </ccmm:conforms_to_standard>
+    <ccmm:original_repository>
+      <ccmm:iri>https://data.example.org/</ccmm:iri>
+    </ccmm:original_repository>
+  </ccmm:metadata_identification>
+  <ccmm:identifier>
+    <ccmm:iri>https://doi.org/10.5072/geoccmm-vyjizdka-2021</ccmm:iri>
+    <ccmm:value>10.5072/geoccmm-vyjizdka-2021</ccmm:value>
+    <ccmm:scheme>
+      <ccmm:iri>https://doi.org/</ccmm:iri>
+    </ccmm:scheme>
+  </ccmm:identifier>
+  <ccmm:identifier>
+    <ccmm:iri>https://hdl.handle.net/123456789/57</ccmm:iri>
+    <ccmm:value>123456789/57</ccmm:value>
+    <ccmm:scheme>
+      <ccmm:iri>https://hdl.handle.net/</ccmm:iri>
+    </ccmm:scheme>
+  </ccmm:identifier>
+  <ccmm:title>Vyjížďka do zaměstnání z obcí Středočeského kraje podle sčítání 2021</ccmm:title>
+  <ccmm:qualified_relation>
+    <ccmm:relation>
+      <ccmm:person>
+        <ccmm:name>Svobodová, Klára</ccmm:name>
+        <ccmm:given_name>Klára</ccmm:given_name>
+        <ccmm:family_name>Svobodová</ccmm:family_name>
+      </ccmm:person>
+    </ccmm:relation>
+    <ccmm:role>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/AgentRole/Creator</ccmm:iri>
+    </ccmm:role>
+  </ccmm:qualified_relation>
+  <ccmm:qualified_relation>
+    <ccmm:relation>
+      <ccmm:person>
+        <ccmm:name>Dvořák, Tomáš</ccmm:name>
+        <ccmm:given_name>Tomáš</ccmm:given_name>
+        <ccmm:family_name>Dvořák</ccmm:family_name>
+      </ccmm:person>
+    </ccmm:relation>
+    <ccmm:role>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/AgentRole/Creator</ccmm:iri>
+    </ccmm:role>
+  </ccmm:qualified_relation>
+  <ccmm:qualified_relation>
+    <ccmm:relation>
+      <ccmm:organization>
+        <ccmm:name>Example University, Map and Data Centre</ccmm:name>
+      </ccmm:organization>
+    </ccmm:relation>
+    <ccmm:role>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/AgentRole/Publisher</ccmm:iri>
+    </ccmm:role>
+  </ccmm:qualified_relation>
+  <ccmm:publication_year>2025</ccmm:publication_year>
+  <ccmm:time_reference>
+    <ccmm:temporal_representation>
+      <ccmm:time_instant>
+        <ccmm:date>2025-09-15</ccmm:date>
+      </ccmm:time_instant>
+    </ccmm:temporal_representation>
+    <ccmm:date_type>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/TimeReference/Created</ccmm:iri>
+    </ccmm:date_type>
+  </ccmm:time_reference>
+  <ccmm:time_reference>
+    <ccmm:temporal_representation>
+      <ccmm:time_instant>
+        <ccmm:date>2025-10-01</ccmm:date>
+      </ccmm:time_instant>
+    </ccmm:temporal_representation>
+    <ccmm:date_type>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/TimeReference/Issued</ccmm:iri>
+    </ccmm:date_type>
+  </ccmm:time_reference>
+  <ccmm:time_reference>
+    <ccmm:temporal_representation>
+      <ccmm:time_interval>
+        <ccmm:beginning>
+          <ccmm:date>2021-03-26</ccmm:date>
+        </ccmm:beginning>
+        <ccmm:end>
+          <ccmm:date>2021-03-27</ccmm:date>
+        </ccmm:end>
+      </ccmm:time_interval>
+    </ccmm:temporal_representation>
+    <ccmm:date_type>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/TimeReference/Coverage</ccmm:iri>
+    </ccmm:date_type>
+  </ccmm:time_reference>
+  <ccmm:resource_type>
+    <ccmm:iri>http://purl.org/coar/resource_type/c_ddb1</ccmm:iri>
+  </ccmm:resource_type>
+  <ccmm:primary_language>
+    <ccmm:iri>http://publications.europa.eu/resource/authority/language/CES</ccmm:iri>
+  </ccmm:primary_language>
+  <ccmm:terms_of_use>
+    <ccmm:access_rights>
+      <ccmm:iri>http://purl.org/coar/access_right/c_16ec</ccmm:iri>
+    </ccmm:access_rights>
+    <ccmm:license>
+      <ccmm:iri>https://data.example.org/licences/research-only</ccmm:iri>
+    </ccmm:license>
+    <ccmm:description xml:lang="cs">Pouze pro výzkum, na základě smlouvy o užití dat.</ccmm:description>
+  </ccmm:terms_of_use>
+  <ccmm:subject>
+    <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50701</ccmm:iri>
+    <ccmm:title xml:lang="en">Cultural and economic geography</ccmm:title>
+    <ccmm:title xml:lang="cs">Kulturní a ekonomická geografie</ccmm:title>
+    <ccmm:classification_code>50701</ccmm:classification_code>
+    <ccmm:subject_scheme>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/</ccmm:iri>
+      <ccmm:label xml:lang="en">OECD FORD Subject Category (Frascati)</ccmm:label>
+      <ccmm:label xml:lang="cs">Oborové třídění OECD FORD (Frascati)</ccmm:label>
+    </ccmm:subject_scheme>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50703</ccmm:iri>
+    <ccmm:title xml:lang="en">Transport planning and social aspects of transport</ccmm:title>
+    <ccmm:title xml:lang="cs">Plánování dopravy a sociální hlediska dopravy</ccmm:title>
+    <ccmm:classification_code>50703</ccmm:classification_code>
+    <ccmm:subject_scheme>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/</ccmm:iri>
+      <ccmm:label xml:lang="en">OECD FORD Subject Category (Frascati)</ccmm:label>
+      <ccmm:label xml:lang="cs">Oborové třídění OECD FORD (Frascati)</ccmm:label>
+    </ccmm:subject_scheme>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:iri>http://inspire.ec.europa.eu/theme/pd</ccmm:iri>
+    <ccmm:title xml:lang="cs">Rozložení obyvatelstva – demografie</ccmm:title>
+    <ccmm:subject_scheme>
+      <ccmm:iri>http://www.eionet.europa.eu/gemet/inspire_themes</ccmm:iri>
+      <ccmm:label xml:lang="en">GEMET - INSPIRE themes, version 1.0</ccmm:label>
+    </ccmm:subject_scheme>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:iri>http://inspire.ec.europa.eu/theme/su</ccmm:iri>
+    <ccmm:title xml:lang="cs">Statistické jednotky</ccmm:title>
+    <ccmm:subject_scheme>
+      <ccmm:iri>http://www.eionet.europa.eu/gemet/inspire_themes</ccmm:iri>
+      <ccmm:label xml:lang="en">GEMET - INSPIRE themes, version 1.0</ccmm:label>
+    </ccmm:subject_scheme>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:iri>http://www.eionet.europa.eu/gemet/concept/1623</ccmm:iri>
+    <ccmm:title xml:lang="cs">dojíždění</ccmm:title>
+    <ccmm:subject_scheme>
+      <ccmm:iri>http://www.eionet.europa.eu/gemet/concept/</ccmm:iri>
+      <ccmm:label xml:lang="cs">GEMET - Concepts, version 4.2.3</ccmm:label>
+    </ccmm:subject_scheme>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:title xml:lang="cs">vyjížďka do zaměstnání</ccmm:title>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:title xml:lang="cs">suburbanizace</ccmm:title>
+  </ccmm:subject>
+  <ccmm:subject>
+    <ccmm:title xml:lang="cs">SLDB 2021</ccmm:title>
+  </ccmm:subject>
+  <ccmm:description>
+    <ccmm:description_text xml:lang="cs">Tabulky vyjížďky do zaměstnání z obcí Středočeského kraje do Prahy a do dalších obcí podle Sčítání lidu, domů a bytů 2021. Pro každou dvojici obcí uvádějí počet vyjíždějících podle pohlaví a způsobu dopravy. Hodí se ke studiu suburbanizace a dojížďkových regionů.</ccmm:description_text>
+    <ccmm:description_type>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/DescriptionType/Abstract</ccmm:iri>
+    </ccmm:description_type>
+  </ccmm:description>
+  <ccmm:location>
+    <ccmm:bounding_box srsName="http://www.opengis.net/def/crs/OGC/1.3/CRS84" srsDimension="2">
+      <gml:lowerCorner>13.40 49.53</gml:lowerCorner>
+      <gml:upperCorner>15.53 50.72</gml:upperCorner>
+    </ccmm:bounding_box>
+    <ccmm:name>Středočeský kraj</ccmm:name>
+    <ccmm:name>Praha</ccmm:name>
+    <ccmm:related_object>
+      <ccmm:iri>http://data.europa.eu/nuts/code/CZ020</ccmm:iri>
+    </ccmm:related_object>
+    <ccmm:relation_type>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/LocationRelation/Refers</ccmm:iri>
+    </ccmm:relation_type>
+  </ccmm:location>
+  <ccmm:funding_reference>
+    <ccmm:funder>
+      <ccmm:organization>
+        <ccmm:identifier>
+          <ccmm:iri>https://doi.org/10.13039/501100001824</ccmm:iri>
+          <ccmm:value>10.13039/501100001824</ccmm:value>
+          <ccmm:scheme>
+            <ccmm:iri>https://doi.org/</ccmm:iri>
+          </ccmm:scheme>
+        </ccmm:identifier>
+        <ccmm:name>Grantová agentura České republiky</ccmm:name>
+      </ccmm:organization>
+    </ccmm:funder>
+  </ccmm:funding_reference>
+  <ccmm:related_resource>
+    <ccmm:iri>https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf</ccmm:iri>
+    <ccmm:identifier>
+      <ccmm:iri>https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf</ccmm:iri>
+      <ccmm:value>https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf</ccmm:value>
+      <ccmm:scheme>
+        <ccmm:iri>https://www.rfc-editor.org/rfc/rfc3987</ccmm:iri>
+      </ccmm:scheme>
+    </ccmm:identifier>
+    <ccmm:resource_url>https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf</ccmm:resource_url>
+    <ccmm:resource_relation_type>
+      <ccmm:iri>https://vocabs.ccmm.cz/registry/codelist/RelationType/IsDocumentedBy</ccmm:iri>
+    </ccmm:resource_relation_type>
+  </ccmm:related_resource>
+  <ccmm:distribution>
+    <ccmm:distribution_downloadable_file>
+      <ccmm:title>Tabulka vyjížďky, CSV</ccmm:title>
+      <ccmm:access_url>
+        <ccmm:iri>https://hdl.handle.net/123456789/57</ccmm:iri>
+      </ccmm:access_url>
+      <ccmm:format>
+        <ccmm:iri>http://publications.europa.eu/resource/authority/file-type/CSV</ccmm:iri>
+        <ccmm:label xml:lang="en">CSV</ccmm:label>
+      </ccmm:format>
+      <ccmm:byte_size>2318456</ccmm:byte_size>
+    </ccmm:distribution_downloadable_file>
+  </ccmm:distribution>
+  <ccmm:provenance>
+    <ccmm:label xml:lang="cs">Sestaveno z otevřených dat Českého statistického úřadu o vyjížďce ze Sčítání lidu, domů a bytů 2021. Vybrány byly toky z obcí Středočeského kraje s nejméně deseti vyjíždějícími, menší toky jsou sloučeny do položky „ostatní“. Kódy obcí odpovídají číselníku obcí platnému k 1. 1. 2021.</ccmm:label>
+  </ccmm:provenance>
+  <geoccmm:record profile="https://w3id.org/geoccmm/core/1.0" mediaType="application/json">{"dc.contributor.author": ["Svobodová, Klára", "Dvořák, Tomáš"], "dc.coverage.spatial": ["Středočeský kraj", "Praha"], "dc.date.created": ["2025-09-15"], "dc.date.issued": ["2025-10-01"], "dc.description.abstract": ["Tabulky vyjížďky do zaměstnání z obcí Středočeského kraje do Prahy a do dalších obcí podle Sčítání lidu, domů a bytů 2021. Pro každou dvojici obcí uvádějí počet vyjíždějících podle pohlaví a způsobu dopravy. Hodí se ke studiu suburbanizace a dojížďkových regionů."], "dc.identifier.doi": ["https://doi.org/10.5072/geoccmm-vyjizdka-2021"], "dc.identifier.uri": ["http://hdl.handle.net/123456789/57"], "dc.language.iso": ["ces"], "dc.rights": ["Licence pro výzkumné užití"], "dc.rights.uri": ["https://data.example.org/licences/research-only"], "dc.subject": ["vyjížďka do zaměstnání", "suburbanizace", "SLDB 2021"], "dc.title": ["Vyjížďka do zaměstnání z obcí Středočeského kraje podle sčítání 2021"], "dc.type": ["Dataset"], "geoccmm.access": ["http://purl.org/coar/access_right/c_16ec"], "geoccmm.bbox": ["13.40;15.53;49.53;50.72"], "geoccmm.conditions": ["Pouze pro výzkum, na základě smlouvy o užití dat."], "geoccmm.distribution": ["Tabulka vyjížďky, CSV;http://publications.europa.eu/resource/authority/file-type/CSV;;2318456;"], "geoccmm.ford": ["https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50701", "https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50703"], "geoccmm.funding": ["Grantová agentura České republiky;https://doi.org/10.13039/501100001824;;;"], "geoccmm.keyword": ["dojíždění;http://www.eionet.europa.eu/gemet/concept/1623;GEMET - Concepts, version 4.2.3;http://www.eionet.europa.eu/gemet/concept/;2021-12-06"], "geoccmm.limitation": ["http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1f;Malé toky mezi obcemi by mohly vést k identifikaci osob."], "geoccmm.lineage": ["Sestaveno z otevřených dat Českého statistického úřadu o vyjížďce ze Sčítání lidu, domů a bytů 2021. Vybrány byly toky z obcí Středočeského kraje s nejméně deseti vyjíždějícími, menší toky jsou sloučeny do položky „ostatní“. Kódy obcí odpovídají číselníku obcí platnému k 1. 1. 2021."], "geoccmm.metadata.language": ["ces"], "geoccmm.period": ["2021-03-26;2021-03-27"], "geoccmm.place": ["http://data.europa.eu/nuts/code/CZ020"], "geoccmm.relation": ["https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf;IsDocumentedBy"], "geoccmm.representation": ["textTable"], "geoccmm.theme": ["http://inspire.ec.europa.eu/theme/pd", "http://inspire.ec.europa.eu/theme/su"], "geoccmm.topic": ["society", "transportation"]}</geoccmm:record>
+</ccmm:dataset>

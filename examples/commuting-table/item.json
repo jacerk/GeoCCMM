@@ -1,0 +1,100 @@
+{
+  "uuid": "9c4e1f20-7b3a-4c55-8e0d-61f2a9b7c3d8",
+  "lastModified": "2026-10-29T14:40:55.020+00:00",
+  "metadata": {
+    "dc.title": [
+      "Vyjížďka do zaměstnání z obcí Středočeského kraje podle sčítání 2021"
+    ],
+    "dc.description.abstract": [
+      "Tabulky vyjížďky do zaměstnání z obcí Středočeského kraje do Prahy a do dalších obcí podle Sčítání lidu, domů a bytů 2021. Pro každou dvojici obcí uvádějí počet vyjíždějících podle pohlaví a způsobu dopravy. Hodí se ke studiu suburbanizace a dojížďkových regionů."
+    ],
+    "dc.contributor.author": [
+      "Svobodová, Klára",
+      "Dvořák, Tomáš"
+    ],
+    "dc.language.iso": [
+      "ces"
+    ],
+    "geoccmm.metadata.language": [
+      "ces"
+    ],
+    "dc.type": [
+      "Dataset"
+    ],
+    "dc.date.created": [
+      "2025-09-15"
+    ],
+    "dc.date.issued": [
+      "2025-10-01"
+    ],
+    "geoccmm.lineage": [
+      "Sestaveno z otevřených dat Českého statistického úřadu o vyjížďce ze Sčítání lidu, domů a bytů 2021. Vybrány byly toky z obcí Středočeského kraje s nejméně deseti vyjíždějícími, menší toky jsou sloučeny do položky „ostatní“. Kódy obcí odpovídají číselníku obcí platnému k 1. 1. 2021."
+    ],
+    "geoccmm.theme": [
+      "http://inspire.ec.europa.eu/theme/pd",
+      "http://inspire.ec.europa.eu/theme/su"
+    ],
+    "geoccmm.topic": [
+      "society",
+      "transportation"
+    ],
+    "geoccmm.ford": [
+      "https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50701",
+      "https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50703"
+    ],
+    "dc.subject": [
+      "vyjížďka do zaměstnání",
+      "suburbanizace",
+      "SLDB 2021"
+    ],
+    "geoccmm.keyword": [
+      "dojíždění;http://www.eionet.europa.eu/gemet/concept/1623;GEMET - Concepts, version 4.2.3;http://www.eionet.europa.eu/gemet/concept/;2021-12-06"
+    ],
+    "geoccmm.bbox": [
+      "13.40;15.53;49.53;50.72"
+    ],
+    "dc.coverage.spatial": [
+      "Středočeský kraj",
+      "Praha"
+    ],
+    "geoccmm.place": [
+      "http://data.europa.eu/nuts/code/CZ020"
+    ],
+    "geoccmm.period": [
+      "2021-03-26;2021-03-27"
+    ],
+    "geoccmm.representation": [
+      "textTable"
+    ],
+    "geoccmm.access": [
+      "http://purl.org/coar/access_right/c_16ec"
+    ],
+    "geoccmm.limitation": [
+      "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1f;Malé toky mezi obcemi by mohly vést k identifikaci osob."
+    ],
+    "geoccmm.conditions": [
+      "Pouze pro výzkum, na základě smlouvy o užití dat."
+    ],
+    "dc.rights.uri": [
+      "https://data.example.org/licences/research-only"
+    ],
+    "dc.rights": [
+      "Licence pro výzkumné užití"
+    ],
+    "geoccmm.distribution": [
+      "Tabulka vyjížďky, CSV;http://publications.europa.eu/resource/authority/file-type/CSV;;2318456;"
+    ],
+    "geoccmm.relation": [
+      "https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf;IsDocumentedBy"
+    ],
+    "geoccmm.funding": [
+      "Grantová agentura České republiky;https://doi.org/10.13039/501100001824;;;"
+    ],
+    "dc.identifier.uri": [
+      "http://hdl.handle.net/123456789/57"
+    ],
+    "dc.identifier.doi": [
+      "https://doi.org/10.5072/geoccmm-vyjizdka-2021"
+    ]
+  }
+}

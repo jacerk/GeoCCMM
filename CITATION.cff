@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use GeoCCMM, please cite it as below."
+type: dataset
+title: "GeoCCMM: a metadata application profile for geospatial research data"
+version: 1.0.0
+abstract: >-
+  GeoCCMM is a metadata application profile for geospatial research data in
+  CLARIN-DSpace. One record with 34 fields maps to CCMM 1.1.0, INSPIRE
+  (ISO 19139, Technical Guidelines 2.2.1) and DataCite 4.6 metadata.
+  Prototype.
+authors:
+  - family-names: "Černík"
+    given-names: "Jáchym"
+    affiliation: "Charles University"
+keywords:
+  - metadata
+  - application profile
+  - geospatial data
+  - INSPIRE
+  - CCMM
+  - DataCite
+  - DSpace

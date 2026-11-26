@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dspace-dc-types>
+  <dspace-header>
+    <title>GeoCCMM Core 1.0.0</title>
+    <description>Fields of the geoccmm schema. Model: https://w3id.org/geoccmm/core/1.0</description>
+  </dspace-header>
+  <dc-schema>
+    <name>geoccmm</name>
+    <namespace>https://w3id.org/geoccmm/core/</namespace>
+  </dc-schema>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>creator</element>
+    <scope_note>Creator identifiers. Optional. One row for each creator with an ORCID, a ROR or an affiliation. Copy the name exactly as it appears in Creators. Parts, separated by semicolons: name; identifier; affiliation; affiliationIdentifier.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>metadata</element>
+    <qualifier>language</qualifier>
+    <scope_note>Metadata language. Language of the title, abstract and other text in this record.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>version</element>
+    <scope_note>Version. The data's own version or edition, e.g. 2.1 or 2024.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>revised</element>
+    <scope_note>Last revision. When the data were last changed, as YYYY-MM-DD. Not the date of this record.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>lineage</element>
+    <scope_note>Lineage. How the data were made: sources, processing steps and known limits of quality.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>theme</element>
+    <scope_note>INSPIRE theme. The INSPIRE data theme the data belong to.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>topic</element>
+    <scope_note>ISO topic category. The broad ISO 19115 topic that catalogues use for searching.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>ford</element>
+    <scope_note>Research field (FORD). The OECD research field that CCMM requires. Choose the most specific one that fits.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>keyword</element>
+    <scope_note>Keywords from a vocabulary. A term from a published vocabulary such as GEMET or EuroVoc, with the vocabulary's title, web address and publication date. Parts, separated by semicolons: term; termIri; vocabulary; vocabularyIri; vocabularyDate.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>bbox</element>
+    <scope_note>Bounding box. The area the data cover, in WGS 84 degrees with a decimal point. If the area crosses the 180° meridian, enter two boxes. Parts, separated by semicolons: west; east; south; north.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>place</element>
+    <scope_note>Place identifiers. Web addresses of the same places in a gazetteer such as RÚIAN, NUTS, GeoNames or Wikidata.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>period</element>
+    <scope_note>Period covered. The time the data describe, not when they were made. Both dates as YYYY-MM-DD. Parts, separated by semicolons: start; end.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>resolution</element>
+    <scope_note>Spatial resolution. Fill in one box per row: the ground distance in metres (10 for a 10 m grid) or the scale denominator (25000 for 1:25 000). Use the same kind in every row. Parts, separated by semicolons: distance; scale.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>crs</element>
+    <scope_note>Coordinate reference system. The coordinate system of the data files as an EPSG web address, e.g. http://www.opengis.net/def/crs/EPSG/0/5514 for S-JTSK / Krovak East North.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>representation</element>
+    <scope_note>Spatial representation. How the data store geography: vector features, a grid, a table, or a triangulated network.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>access</element>
+    <scope_note>Access. Who can get the data. It must agree with the licence and the file permissions.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>limitation</element>
+    <scope_note>Limitation on public access. The INSPIRE ground for limiting public access, with a short explanation. Leave it empty for open data; it then means no limitations. Parts, separated by semicolons: code; explanation.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>conditions</element>
+    <scope_note>Use conditions and fees. Conditions on top of the licence, such as fees or a requested citation. Leave empty if there are none.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>distribution</element>
+    <scope_note>Downloads. One row for each download: a short name, its file format, format version if known, size in bytes, and its direct link if it has one. Parts, separated by semicolons: name; format; formatVersion; bytes; url.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>service</element>
+    <scope_note>Map or data services. Web services that serve these data, e.g. a WMS. Give the service address, a name and the service type. Parts, separated by semicolons: url; name; protocol.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>relation</element>
+    <scope_note>Related resources. Links to publications, documentation, source data or other versions, each with how it relates to this dataset. A DOI already assigned elsewhere goes here as "Is identical to". Parts, separated by semicolons: identifier; type.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>funding</element>
+    <scope_note>Funding. Who paid for the work: the funder, its ROR or Crossref Funder ID, and the grant number, title and web address if known. Parts, separated by semicolons: funder; funderIdentifier; awardNumber; awardTitle; awardUri.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>geoccmm</schema>
+    <element>conformity</element>
+    <scope_note>INSPIRE conformity. Whether the data conform to Commission Regulation (EU) No 1089/2010, with a short explanation. Leave empty if this was not evaluated. Parts, separated by semicolons: degree; explanation.</scope_note>
+  </dc-type>
+</dspace-dc-types>

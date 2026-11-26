@@ -1,0 +1,606 @@
+{
+  "name": "GeoCCMM Core",
+  "version": "1.0.0",
+  "id": "https://w3id.org/geoccmm/core/1.0",
+  "description": "The shared core of the GeoCCMM metadata profiles: 34 fields that make one DSpace record exportable as valid CCMM 1.1.0, INSPIRE (TG 2.2.1, ISO 19139) and DataCite 4.6 metadata.",
+  "targets": {
+    "ccmm": "CCMM 1.1.0 (https://schema.ccmm.cz/research-data/1.1)",
+    "inspire": "INSPIRE Metadata Technical Guidelines 2.2.1, ISO 19139 encoding",
+    "datacite": "DataCite Metadata Schema 4.6",
+    "dspace": "CLARIN-DSpace 2026.2"
+  },
+  "dspace": {
+    "schema": "geoccmm",
+    "namespace": "https://w3id.org/geoccmm/core/",
+    "separator": ";",
+    "partLimit": 200,
+    "versionLinks": {
+      "dc.relation.replaces": "IsNewVersionOf",
+      "dc.relation.isreplacedby": "IsPreviousVersionOf"
+    },
+    "steps": [
+      {"id": "describe", "label": {"en": "About the data", "cs": "O datech"}},
+      {"id": "where", "label": {"en": "Subjects, place and time", "cs": "Témata, místo a čas"}},
+      {"id": "access", "label": {"en": "Access and links", "cs": "Přístup a odkazy"}},
+      {"id": "curator", "label": {"en": "Curator checks", "cs": "Kontrola kurátorem"}, "workflowOnly": true}
+    ]
+  },
+  "fields": [
+    {
+      "id": "title",
+      "key": "dc.title",
+      "label": {"en": "Title", "cs": "Název"},
+      "hint": {"en": "The name of the dataset, as others should cite it.", "cs": "Název datové sady tak, jak ji mají ostatní citovat."},
+      "required": true,
+      "requiredBy": ["INSPIRE", "CCMM", "DataCite"],
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "onebox",
+      "step": "describe"
+    },
+    {
+      "id": "abstract",
+      "key": "dc.description.abstract",
+      "label": {"en": "Abstract", "cs": "Abstrakt"},
+      "hint": {"en": "What the data contain, which place and period they describe, and what they are good for.", "cs": "Co data obsahují, jaké místo a období popisují a k čemu se hodí."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "textarea",
+      "step": "describe"
+    },
+    {
+      "id": "creators",
+      "key": "dc.contributor.author",
+      "label": {"en": "Creators", "cs": "Autoři"},
+      "hint": {"en": "People or organisations who made the data, in citation order. For a person, fill in surname and given name. For an organisation, put its full name in the surname box and use no comma.", "cs": "Osoby nebo organizace, které data vytvořily, v pořadí pro citaci. U osoby vyplňte příjmení a křestní jméno. U organizace napište celý název do pole pro příjmení, bez čárky."},
+      "required": true,
+      "requiredBy": ["DataCite"],
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "name",
+      "step": "describe",
+      "details": {
+        "id": "creatorDetails",
+        "key": "geoccmm.creator",
+        "label": {"en": "Creator identifiers", "cs": "Identifikátory autorů"},
+        "hint": {"en": "Optional. One row for each creator with an ORCID, a ROR or an affiliation. Copy the name exactly as it appears in Creators.", "cs": "Nepovinné. Jeden řádek pro každého autora s ORCID, ROR nebo afiliací. Jméno opište přesně tak, jak je v poli Autoři."},
+        "repeatable": true,
+        "parts": [
+          {"name": "name", "label": {"en": "Name, as in Creators", "cs": "Jméno jako v poli Autoři"}, "required": true, "pattern": "[^;]{1,200}"},
+          {"name": "identifier", "label": {"en": "ORCID (person) or ROR (organisation)", "cs": "ORCID (osoba) nebo ROR (organizace)"}, "required": false, "pattern": "https://(orcid\\.org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]|ror\\.org/0[a-hj-km-np-tv-z0-9]{6}[0-9]{2})"},
+          {"name": "affiliation", "label": {"en": "Affiliation (persons only)", "cs": "Afiliace (jen u osob)"}, "required": false, "pattern": "[^;]{1,200}"},
+          {"name": "affiliationIdentifier", "label": {"en": "ROR of the affiliation", "cs": "ROR afiliace"}, "required": false, "pattern": "https://ror\\.org/0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}"}
+        ]
+      }
+    },
+    {
+      "id": "dataLanguage",
+      "key": "dc.language.iso",
+      "label": {"en": "Data language", "cs": "Jazyk dat"},
+      "hint": {"en": "Language of the data content: labels, attribute values, documents. Start typing the language name. For purely numeric data, type \"linguistic\" and choose the no-linguistic-content entry (code zxx).", "cs": "Jazyk obsahu dat: popisky, hodnoty atributů, dokumenty. Začněte psát anglický název jazyka (Czech, English). U čistě číselných dat napište „linguistic“ a zvolte položku bez jazykového obsahu (kód zxx)."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "language",
+      "step": "describe",
+      "pattern": "[a-z]{3}"
+    },
+    {
+      "id": "metadataLanguage",
+      "key": "geoccmm.metadata.language",
+      "label": {"en": "Metadata language", "cs": "Jazyk metadat"},
+      "hint": {"en": "Language of the title, abstract and other text in this record.", "cs": "Jazyk názvu, abstraktu a ostatních textů v tomto záznamu."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "default",
+      "default": {"en": "The repository's metadata language from the settings file.", "cs": "Jazyk metadat repozitáře ze souboru nastavení."},
+      "repeatable": false,
+      "input": "dropdown",
+      "step": "describe",
+      "choices": [
+        {"value": "bul", "label": {"en": "Bulgarian", "cs": "bulharština"}},
+        {"value": "ces", "label": {"en": "Czech", "cs": "čeština"}},
+        {"value": "dan", "label": {"en": "Danish", "cs": "dánština"}},
+        {"value": "deu", "label": {"en": "German", "cs": "němčina"}},
+        {"value": "ell", "label": {"en": "Greek", "cs": "řečtina"}},
+        {"value": "eng", "label": {"en": "English", "cs": "angličtina"}},
+        {"value": "spa", "label": {"en": "Spanish", "cs": "španělština"}},
+        {"value": "est", "label": {"en": "Estonian", "cs": "estonština"}},
+        {"value": "fin", "label": {"en": "Finnish", "cs": "finština"}},
+        {"value": "fra", "label": {"en": "French", "cs": "francouzština"}},
+        {"value": "gle", "label": {"en": "Irish", "cs": "irština"}},
+        {"value": "hrv", "label": {"en": "Croatian", "cs": "chorvatština"}},
+        {"value": "hun", "label": {"en": "Hungarian", "cs": "maďarština"}},
+        {"value": "ita", "label": {"en": "Italian", "cs": "italština"}},
+        {"value": "lit", "label": {"en": "Lithuanian", "cs": "litevština"}},
+        {"value": "lav", "label": {"en": "Latvian", "cs": "lotyština"}},
+        {"value": "mlt", "label": {"en": "Maltese", "cs": "maltština"}},
+        {"value": "nld", "label": {"en": "Dutch", "cs": "nizozemština"}},
+        {"value": "pol", "label": {"en": "Polish", "cs": "polština"}},
+        {"value": "por", "label": {"en": "Portuguese", "cs": "portugalština"}},
+        {"value": "ron", "label": {"en": "Romanian", "cs": "rumunština"}},
+        {"value": "slk", "label": {"en": "Slovak", "cs": "slovenština"}},
+        {"value": "slv", "label": {"en": "Slovenian", "cs": "slovinština"}},
+        {"value": "swe", "label": {"en": "Swedish", "cs": "švédština"}}
+      ]
+    },
+    {
+      "id": "resourceType",
+      "key": "dc.type",
+      "label": {"en": "Resource type", "cs": "Typ zdroje"},
+      "hint": {"en": "One dataset, or a series of datasets made to the same specification.", "cs": "Jedna datová sada, nebo série datových sad podle stejné specifikace."},
+      "required": true,
+      "requiredBy": ["INSPIRE", "DataCite"],
+      "filledBy": "default",
+      "default": {"en": "Dataset", "cs": "Dataset"},
+      "formDefault": "Dataset",
+      "repeatable": false,
+      "input": "dropdown",
+      "step": "describe",
+      "choices": [
+        {"value": "Dataset", "label": {"en": "Dataset", "cs": "Datová sada"}},
+        {"value": "Dataset series", "label": {"en": "Dataset series", "cs": "Série datových sad"}}
+      ]
+    },
+    {
+      "id": "creationDate",
+      "key": "dc.date.created",
+      "label": {"en": "Creation date", "cs": "Datum vytvoření"},
+      "hint": {"en": "When the data were made, as YYYY-MM-DD.", "cs": "Kdy data vznikla, ve tvaru RRRR-MM-DD."},
+      "required": true,
+      "requiredBy": ["CCMM"],
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "onebox",
+      "step": "describe",
+      "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+    },
+    {
+      "id": "publicationDate",
+      "key": "dc.date.issued",
+      "label": {"en": "Publication date", "cs": "Datum zveřejnění"},
+      "hint": {"en": "Keep \"today\" to publish with the date the item is approved, or enter YYYY-MM-DD.", "cs": "Ponechte „today“ a jako datum zveřejnění se použije den schválení, nebo zadejte RRRR-MM-DD."},
+      "required": true,
+      "requiredBy": ["CCMM", "DataCite"],
+      "filledBy": "default",
+      "default": {"en": "today: DSpace replaces it with the approval date.", "cs": "today: DSpace ho nahradí datem schválení."},
+      "templateDefault": "today",
+      "repeatable": false,
+      "input": "onebox",
+      "step": "describe",
+      "pattern": "today|[0-9]{4}-[0-9]{2}-[0-9]{2}"
+    },
+    {
+      "id": "version",
+      "key": "geoccmm.version",
+      "label": {"en": "Version", "cs": "Verze"},
+      "hint": {"en": "The data's own version or edition, e.g. 2.1 or 2024.", "cs": "Verze nebo vydání dat, např. 2.1 nebo 2024."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "onebox",
+      "step": "describe"
+    },
+    {
+      "id": "revisionDate",
+      "key": "geoccmm.revised",
+      "label": {"en": "Last revision", "cs": "Poslední revize"},
+      "hint": {"en": "When the data were last changed, as YYYY-MM-DD. Not the date of this record.", "cs": "Kdy byla data naposledy změněna, ve tvaru RRRR-MM-DD. Nejde o datum tohoto záznamu."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "onebox",
+      "step": "describe",
+      "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+    },
+    {
+      "id": "lineage",
+      "key": "geoccmm.lineage",
+      "label": {"en": "Lineage", "cs": "Původ dat"},
+      "hint": {"en": "How the data were made: sources, processing steps and known limits of quality.", "cs": "Jak data vznikla: zdroje, postup zpracování a známá omezení kvality."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "textarea",
+      "step": "describe"
+    },
+    {
+      "id": "inspireTheme",
+      "key": "geoccmm.theme",
+      "label": {"en": "INSPIRE theme", "cs": "Téma INSPIRE"},
+      "hint": {"en": "The INSPIRE data theme the data belong to.", "cs": "Téma INSPIRE, do kterého data patří."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "dropdown",
+      "step": "where",
+      "vocabulary": "themes"
+    },
+    {
+      "id": "topicCategory",
+      "key": "geoccmm.topic",
+      "label": {"en": "ISO topic category", "cs": "Tematická kategorie ISO"},
+      "hint": {"en": "The broad ISO 19115 topic that catalogues use for searching.", "cs": "Obecná kategorie ISO 19115, podle které se hledá v katalozích."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "dropdown",
+      "step": "where",
+      "vocabulary": "topicCategories"
+    },
+    {
+      "id": "fordField",
+      "key": "geoccmm.ford",
+      "label": {"en": "Research field (FORD)", "cs": "Obor (FORD)"},
+      "hint": {"en": "The OECD research field that CCMM requires. Choose the most specific one that fits.", "cs": "Obor podle klasifikace OECD FORD, který vyžaduje CCMM. Zvolte co nejpodrobnější vhodný obor."},
+      "required": true,
+      "requiredBy": ["CCMM"],
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "dropdown",
+      "step": "where",
+      "vocabulary": "ford"
+    },
+    {
+      "id": "keywords",
+      "key": "dc.subject",
+      "label": {"en": "Keywords", "cs": "Klíčová slova"},
+      "hint": {"en": "Free keywords in the metadata language. Press Enter after each one.", "cs": "Volná klíčová slova v jazyce metadat. Každé potvrďte klávesou Enter."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "tag",
+      "step": "where"
+    },
+    {
+      "id": "vocabularyKeywords",
+      "key": "geoccmm.keyword",
+      "label": {"en": "Keywords from a vocabulary", "cs": "Klíčová slova ze slovníku"},
+      "hint": {"en": "A term from a published vocabulary such as GEMET or EuroVoc, with the vocabulary's title, web address and publication date.", "cs": "Termín z publikovaného slovníku, např. GEMET nebo EuroVoc, s názvem, webovou adresou a datem vydání slovníku."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "where",
+      "parts": [
+        {"name": "term", "label": {"en": "Term", "cs": "Termín"}, "required": true, "pattern": "[^;]{1,200}"},
+        {"name": "termIri", "label": {"en": "Term address (IRI)", "cs": "Adresa termínu (IRI)"}, "required": false, "pattern": "(https?://|urn:)[^\\s;]{1,192}"},
+        {"name": "vocabulary", "label": {"en": "Vocabulary title", "cs": "Název slovníku"}, "required": true, "pattern": "[^;]{1,200}"},
+        {"name": "vocabularyIri", "label": {"en": "Vocabulary address (IRI)", "cs": "Adresa slovníku (IRI)"}, "required": true, "pattern": "(https?://|urn:)[^\\s;]{1,192}"},
+        {"name": "vocabularyDate", "label": {"en": "Vocabulary date (YYYY-MM-DD)", "cs": "Datum slovníku (RRRR-MM-DD)"}, "required": true, "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"}
+      ]
+    },
+    {
+      "id": "boundingBox",
+      "key": "geoccmm.bbox",
+      "label": {"en": "Bounding box", "cs": "Ohraničující obdélník"},
+      "hint": {"en": "The area the data cover, in WGS 84 degrees with a decimal point. If the area crosses the 180° meridian, enter two boxes.", "cs": "Území, které data pokrývají, ve stupních WGS 84 s desetinnou tečkou. Pokud území přechází 180. poledník, zadejte dva obdélníky."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "where",
+      "parts": [
+        {"name": "west", "label": {"en": "West longitude", "cs": "Západní délka"}, "required": true, "pattern": "-?[0-9]{1,3}(\\.[0-9]{1,15})?"},
+        {"name": "east", "label": {"en": "East longitude", "cs": "Východní délka"}, "required": true, "pattern": "-?[0-9]{1,3}(\\.[0-9]{1,15})?"},
+        {"name": "south", "label": {"en": "South latitude", "cs": "Jižní šířka"}, "required": true, "pattern": "-?[0-9]{1,2}(\\.[0-9]{1,15})?"},
+        {"name": "north", "label": {"en": "North latitude", "cs": "Severní šířka"}, "required": true, "pattern": "-?[0-9]{1,2}(\\.[0-9]{1,15})?"}
+      ]
+    },
+    {
+      "id": "placeNames",
+      "key": "dc.coverage.spatial",
+      "label": {"en": "Place names", "cs": "Názvy míst"},
+      "hint": {"en": "Names of the places the data cover, e.g. Prague or Šumava National Park.", "cs": "Názvy míst, která data pokrývají, např. Praha nebo Národní park Šumava."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "onebox",
+      "step": "where"
+    },
+    {
+      "id": "placeIdentifiers",
+      "key": "geoccmm.place",
+      "label": {"en": "Place identifiers", "cs": "Identifikátory míst"},
+      "hint": {"en": "Web addresses of the same places in a gazetteer such as RÚIAN, NUTS, GeoNames or Wikidata.", "cs": "Webové adresy stejných míst v rejstříku, např. RÚIAN, NUTS, GeoNames nebo Wikidata."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "onebox",
+      "step": "where",
+      "pattern": "(https?://|urn:)[^\\s;]+"
+    },
+    {
+      "id": "periodCovered",
+      "key": "geoccmm.period",
+      "label": {"en": "Period covered", "cs": "Období, které data popisují"},
+      "hint": {"en": "The time the data describe, not when they were made. Both dates as YYYY-MM-DD.", "cs": "Čas, který data popisují, ne kdy vznikla. Obě data ve tvaru RRRR-MM-DD."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "where",
+      "parts": [
+        {"name": "start", "label": {"en": "From", "cs": "Od"}, "required": true, "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"},
+        {"name": "end", "label": {"en": "To", "cs": "Do"}, "required": true, "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"}
+      ]
+    },
+    {
+      "id": "spatialResolution",
+      "key": "geoccmm.resolution",
+      "label": {"en": "Spatial resolution", "cs": "Prostorové rozlišení"},
+      "hint": {"en": "Fill in one box per row: the ground distance in metres (10 for a 10 m grid) or the scale denominator (25000 for 1:25 000). Use the same kind in every row.", "cs": "V každém řádku vyplňte jedno pole: vzdálenost v metrech (10 pro mřížku 10 m), nebo měřítkové číslo (25000 pro 1 : 25 000). Ve všech řádcích použijte stejný druh."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "where",
+      "parts": [
+        {"name": "distance", "label": {"en": "Distance in metres", "cs": "Vzdálenost v metrech"}, "required": false, "pattern": "[0-9]{1,12}(\\.[0-9]{1,12})?"},
+        {"name": "scale", "label": {"en": "Scale denominator", "cs": "Měřítkové číslo"}, "required": false, "pattern": "[0-9]{1,12}"}
+      ]
+    },
+    {
+      "id": "referenceSystem",
+      "key": "geoccmm.crs",
+      "label": {"en": "Coordinate reference system", "cs": "Souřadnicový systém"},
+      "hint": {"en": "The coordinate system of the data files as an EPSG web address, e.g. http://www.opengis.net/def/crs/EPSG/0/5514 for S-JTSK / Krovak East North.", "cs": "Souřadnicový systém datových souborů jako webová adresa EPSG, např. http://www.opengis.net/def/crs/EPSG/0/5514 pro S-JTSK / Krovak East North."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "onebox",
+      "step": "where",
+      "pattern": "(https?://|urn:)[^\\s;]+"
+    },
+    {
+      "id": "spatialRepresentation",
+      "key": "geoccmm.representation",
+      "label": {"en": "Spatial representation", "cs": "Prostorová reprezentace"},
+      "hint": {"en": "How the data store geography: vector features, a grid, a table, or a triangulated network.", "cs": "Jak data ukládají geografii: vektorové prvky, mřížka, tabulka, nebo trojúhelníková síť."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "dropdown",
+      "step": "where",
+      "choices": [
+        {"value": "vector", "label": {"en": "Vector", "cs": "Vektor"}},
+        {"value": "grid", "label": {"en": "Grid (raster)", "cs": "Mřížka (rastr)"}},
+        {"value": "textTable", "label": {"en": "Table", "cs": "Tabulka"}},
+        {"value": "tin", "label": {"en": "Triangulated irregular network (TIN)", "cs": "Nepravidelná trojúhelníková síť (TIN)"}}
+      ]
+    },
+    {
+      "id": "accessCategory",
+      "key": "geoccmm.access",
+      "label": {"en": "Access", "cs": "Přístup"},
+      "hint": {"en": "Who can get the data. It must agree with the licence and the file permissions.", "cs": "Kdo může data získat. Musí odpovídat licenci a oprávněním k souborům."},
+      "required": true,
+      "requiredBy": ["CCMM"],
+      "filledBy": "default",
+      "default": {"en": "Open access", "cs": "Otevřený přístup"},
+      "formDefault": "http://purl.org/coar/access_right/c_abf2",
+      "repeatable": false,
+      "input": "dropdown",
+      "step": "access",
+      "choices": [
+        {"value": "http://purl.org/coar/access_right/c_abf2", "label": {"en": "Open access", "cs": "Otevřený přístup"}},
+        {"value": "http://purl.org/coar/access_right/c_f1cf", "label": {"en": "Embargoed access", "cs": "Odložený přístup (embargo)"}},
+        {"value": "http://purl.org/coar/access_right/c_16ec", "label": {"en": "Restricted access", "cs": "Omezený přístup"}},
+        {"value": "http://purl.org/coar/access_right/c_14cb", "label": {"en": "Metadata only access", "cs": "Pouze metadata"}}
+      ]
+    },
+    {
+      "id": "publicAccessLimitation",
+      "key": "geoccmm.limitation",
+      "label": {"en": "Limitation on public access", "cs": "Omezení veřejného přístupu"},
+      "hint": {"en": "The INSPIRE ground for limiting public access, with a short explanation. Leave it empty for open data; it then means no limitations.", "cs": "Důvod omezení veřejného přístupu podle INSPIRE a krátké vysvětlení. U otevřených dat nechte prázdné; pak to znamená bez omezení."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "default",
+      "default": {"en": "No limitations, when the access is open access.", "cs": "Bez omezení, pokud je přístup otevřený."},
+      "inspireText": {
+        "about": "The INSPIRE registry publishes labels only in English, German and Dutch. These Czech texts mirror the English ones, for Czech records.",
+        "ces": {
+          "noLimitations": "bez omezení veřejného přístupu",
+          "INSPIRE_Directive_Article13_1a": "veřejný přístup omezen podle čl. 13 odst. 1 písm. a) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1b": "veřejný přístup omezen podle čl. 13 odst. 1 písm. b) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1c": "veřejný přístup omezen podle čl. 13 odst. 1 písm. c) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1d": "veřejný přístup omezen podle čl. 13 odst. 1 písm. d) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1e": "veřejný přístup omezen podle čl. 13 odst. 1 písm. e) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1f": "veřejný přístup omezen podle čl. 13 odst. 1 písm. f) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1g": "veřejný přístup omezen podle čl. 13 odst. 1 písm. g) směrnice INSPIRE",
+          "INSPIRE_Directive_Article13_1h": "veřejný přístup omezen podle čl. 13 odst. 1 písm. h) směrnice INSPIRE"
+        }
+      },
+      "repeatable": true,
+      "input": "group",
+      "step": "access",
+      "parts": [
+        {"name": "code", "label": {"en": "Ground", "cs": "Důvod"}, "required": true, "choices": [
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations", "label": {"en": "No limitations", "cs": "Bez omezení"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1a", "label": {"en": "Art. 13(1)(a): confidentiality of public authorities' proceedings", "cs": "Čl. 13 odst. 1 písm. a): důvěrnost jednání orgánů veřejné moci"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1b", "label": {"en": "Art. 13(1)(b): international relations, public security or national defence", "cs": "Čl. 13 odst. 1 písm. b): mezinárodní vztahy, veřejná bezpečnost nebo obrana státu"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1c", "label": {"en": "Art. 13(1)(c): course of justice, fair trial, criminal or disciplinary enquiries", "cs": "Čl. 13 odst. 1 písm. c): průběh soudního řízení, spravedlivý proces, trestní nebo kárné vyšetřování"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d", "label": {"en": "Art. 13(1)(d): confidentiality of commercial or industrial information", "cs": "Čl. 13 odst. 1 písm. d): důvěrnost obchodních nebo průmyslových informací"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e", "label": {"en": "Art. 13(1)(e): intellectual property rights", "cs": "Čl. 13 odst. 1 písm. e): práva duševního vlastnictví"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1f", "label": {"en": "Art. 13(1)(f): confidentiality of personal data", "cs": "Čl. 13 odst. 1 písm. f): důvěrnost osobních údajů"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1g", "label": {"en": "Art. 13(1)(g): protection of a person who supplied the information voluntarily", "cs": "Čl. 13 odst. 1 písm. g): ochrana osoby, která informace poskytla dobrovolně"}},
+          {"value": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1h", "label": {"en": "Art. 13(1)(h): protection of the environment, e.g. sites of rare species", "cs": "Čl. 13 odst. 1 písm. h): ochrana životního prostředí, např. lokality vzácných druhů"}}
+        ]},
+        {"name": "explanation", "label": {"en": "Explanation", "cs": "Vysvětlení"}, "required": false, "pattern": "[^;]{1,200}"}
+      ]
+    },
+    {
+      "id": "useConditions",
+      "key": "geoccmm.conditions",
+      "label": {"en": "Use conditions and fees", "cs": "Podmínky užití a poplatky"},
+      "hint": {"en": "Conditions on top of the licence, such as fees or a requested citation. Leave empty if there are none.", "cs": "Podmínky nad rámec licence, například poplatky nebo požadovaná citace. Pokud žádné nejsou, nechte prázdné."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": false,
+      "input": "textarea",
+      "step": "access"
+    },
+    {
+      "id": "downloads",
+      "key": "geoccmm.distribution",
+      "label": {"en": "Downloads", "cs": "Soubory ke stažení"},
+      "hint": {"en": "One row for each download: a short name, its file format, format version if known, size in bytes, and its direct link if it has one.", "cs": "Jeden řádek pro každý soubor ke stažení: krátký název, formát, verze formátu (je-li známa), velikost v bajtech a přímý odkaz, pokud existuje."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "access",
+      "parts": [
+        {"name": "name", "label": {"en": "Name", "cs": "Název"}, "required": true, "pattern": "[^;]{1,200}"},
+        {"name": "format", "label": {"en": "File format", "cs": "Formát souboru"}, "required": true, "vocabulary": "fileTypes"},
+        {"name": "formatVersion", "label": {"en": "Format version", "cs": "Verze formátu"}, "required": false, "pattern": "[^;]{1,200}"},
+        {"name": "bytes", "label": {"en": "Size in bytes", "cs": "Velikost v bajtech"}, "required": true, "pattern": "[0-9]{1,18}"},
+        {"name": "url", "label": {"en": "Direct link", "cs": "Přímý odkaz"}, "required": false, "pattern": "https?://[^\\s;]{1,192}"}
+      ]
+    },
+    {
+      "id": "services",
+      "key": "geoccmm.service",
+      "label": {"en": "Map or data services", "cs": "Mapové a datové služby"},
+      "hint": {"en": "Web services that serve these data, e.g. a WMS. Give the service address, a name and the service type.", "cs": "Webové služby, které tato data poskytují, např. WMS. Uveďte adresu služby, název a typ služby."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "access",
+      "parts": [
+        {"name": "url", "label": {"en": "Service address", "cs": "Adresa služby"}, "required": true, "pattern": "https?://[^\\s;]{1,192}"},
+        {"name": "name", "label": {"en": "Name", "cs": "Název"}, "required": true, "pattern": "[^;]{1,200}"},
+        {"name": "protocol", "label": {"en": "Service type", "cs": "Typ služby"}, "required": true, "source": "INSPIRE registry, ProtocolValue code list; English labels are the official ones", "choices": [
+          {"value": "http://www.opengis.net/def/serviceType/ogc/wms", "label": {"en": "OGC Web Map Service", "cs": "OGC Web Map Service (WMS, mapová služba)"}},
+          {"value": "http://www.opengis.net/def/serviceType/ogc/wmts", "label": {"en": "OGC Web Map Tile Service", "cs": "OGC Web Map Tile Service (WMTS, dlaždicová mapová služba)"}},
+          {"value": "http://www.opengis.net/def/serviceType/ogc/wfs", "label": {"en": "OGC Web Feature Service", "cs": "OGC Web Feature Service (WFS, služba pro vektorová data)"}},
+          {"value": "http://www.opengis.net/def/serviceType/ogc/wcs", "label": {"en": "OGC Web Coverage Service", "cs": "OGC Web Coverage Service (WCS, služba pro rastrová data)"}},
+          {"value": "http://www.opengis.net/def/serviceType/ogc/sos", "label": {"en": "OGC Sensor Observation Service", "cs": "OGC Sensor Observation Service (SOS, služba pro data senzorů)"}},
+          {"value": "http://www.opengis.net/def/interface/ogcapi-features", "label": {"en": "OGC API-Features", "cs": "OGC API-Features"}},
+          {"value": "https://tools.ietf.org/html/rfc4287", "label": {"en": "ATOM Syndication Format", "cs": "ATOM Syndication Format (stahovací kanál)"}}
+        ]}
+      ]
+    },
+    {
+      "id": "relatedResources",
+      "key": "geoccmm.relation",
+      "label": {"en": "Related resources", "cs": "Související zdroje"},
+      "hint": {"en": "Links to publications, documentation, source data or other versions, each with how it relates to this dataset. A DOI already assigned elsewhere goes here as \"Is identical to\".", "cs": "Odkazy na publikace, dokumentaci, zdrojová data nebo jiné verze a jejich vztah k této datové sadě. DOI přidělené jinde patří sem jako „Je totožný s“."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "access",
+      "parts": [
+        {"name": "identifier", "label": {"en": "Link or identifier (IRI)", "cs": "Odkaz nebo identifikátor (IRI)"}, "required": true, "pattern": "(https?://|urn:)[^\\s;]{1,192}"},
+        {"name": "type", "label": {"en": "This dataset ...", "cs": "Tato datová sada ..."}, "required": true, "choices": [
+          {"value": "IsCitedBy", "label": {"en": "is cited by", "cs": "je citována v"}},
+          {"value": "Cites", "label": {"en": "cites", "cs": "cituje"}},
+          {"value": "IsSupplementTo", "label": {"en": "is a supplement to", "cs": "je doplňkem k"}},
+          {"value": "IsSupplementedBy", "label": {"en": "is supplemented by", "cs": "je doplněna o"}},
+          {"value": "IsNewVersionOf", "label": {"en": "is a new version of", "cs": "je novou verzí"}},
+          {"value": "IsPreviousVersionOf", "label": {"en": "is a previous version of", "cs": "je předchozí verzí"}},
+          {"value": "IsVersionOf", "label": {"en": "is a version of", "cs": "je verzí"}},
+          {"value": "HasVersion", "label": {"en": "has a version", "cs": "má verzi"}},
+          {"value": "IsPartOf", "label": {"en": "is part of", "cs": "je součástí"}},
+          {"value": "HasPart", "label": {"en": "has part", "cs": "obsahuje část"}},
+          {"value": "IsReferencedBy", "label": {"en": "is referenced by", "cs": "je zmíněna v"}},
+          {"value": "References", "label": {"en": "references", "cs": "odkazuje na"}},
+          {"value": "IsDocumentedBy", "label": {"en": "is documented by", "cs": "je dokumentována v"}},
+          {"value": "Documents", "label": {"en": "documents", "cs": "dokumentuje"}},
+          {"value": "IsDerivedFrom", "label": {"en": "is derived from", "cs": "je odvozena z"}},
+          {"value": "IsSourceOf", "label": {"en": "is a source of", "cs": "je zdrojem pro"}},
+          {"value": "IsIdenticalTo", "label": {"en": "is identical to", "cs": "je totožná s"}}
+        ]}
+      ]
+    },
+    {
+      "id": "funding",
+      "key": "geoccmm.funding",
+      "label": {"en": "Funding", "cs": "Financování"},
+      "hint": {"en": "Who paid for the work: the funder, its ROR or Crossref Funder ID, and the grant number, title and web address if known.", "cs": "Kdo práci financoval: poskytovatel, jeho ROR nebo Crossref Funder ID, a číslo, název a webová adresa grantu, jsou-li známy."},
+      "required": false,
+      "filledBy": "depositor",
+      "repeatable": true,
+      "input": "group",
+      "step": "access",
+      "parts": [
+        {"name": "funder", "label": {"en": "Funder", "cs": "Poskytovatel"}, "required": true, "pattern": "[^;]{1,200}"},
+        {"name": "funderIdentifier", "label": {"en": "Funder ROR or Crossref Funder ID", "cs": "ROR nebo Crossref Funder ID poskytovatele"}, "required": false, "pattern": "https://(ror\\.org/0[a-hj-km-np-tv-z0-9]{6}[0-9]{2}|doi\\.org/10\\.13039/[0-9]{1,20})"},
+        {"name": "awardNumber", "label": {"en": "Grant number", "cs": "Číslo grantu"}, "required": false, "pattern": "[^;]{1,200}"},
+        {"name": "awardTitle", "label": {"en": "Grant title", "cs": "Název grantu"}, "required": false, "pattern": "[^;]{1,200}"},
+        {"name": "awardUri", "label": {"en": "Grant web address", "cs": "Webová adresa grantu"}, "required": false, "pattern": "https?://[^\\s;]{1,192}"}
+      ]
+    },
+    {
+      "id": "conformity",
+      "key": "geoccmm.conformity",
+      "label": {"en": "INSPIRE conformity", "cs": "Soulad s INSPIRE"},
+      "hint": {"en": "Whether the data conform to Commission Regulation (EU) No 1089/2010, with a short explanation. Leave empty if this was not evaluated.", "cs": "Zda data odpovídají nařízení Komise (EU) č. 1089/2010, s krátkým vysvětlením. Pokud to nebylo hodnoceno, nechte prázdné."},
+      "required": true,
+      "requiredBy": ["INSPIRE"],
+      "filledBy": "default",
+      "default": {"en": "Not evaluated.", "cs": "Nehodnoceno."},
+      "defaultExplanation": {
+        "eng": "Conformity with Commission Regulation (EU) No 1089/2010 has not been evaluated.",
+        "ces": "Soulad s nařízením Komise (EU) č. 1089/2010 nebyl hodnocen."
+      },
+      "repeatable": false,
+      "input": "group",
+      "step": "curator",
+      "parts": [
+        {"name": "degree", "label": {"en": "Result", "cs": "Výsledek"}, "required": true, "choices": [
+          {"value": "notEvaluated", "label": {"en": "Not evaluated", "cs": "Nehodnoceno"}},
+          {"value": "conformant", "label": {"en": "Conformant", "cs": "Ve shodě"}},
+          {"value": "notConformant", "label": {"en": "Not conformant", "cs": "Není ve shodě"}}
+        ]},
+        {"name": "explanation", "label": {"en": "Explanation", "cs": "Vysvětlení"}, "required": false, "pattern": "[^;]{1,200}"}
+      ]
+    },
+    {
+      "id": "licence",
+      "key": "dc.rights.uri",
+      "label": {"en": "Licence", "cs": "Licence"},
+      "hint": {"en": "Chosen in DSpace's licence step.", "cs": "Volí se v kroku Licence v DSpace."},
+      "required": true,
+      "requiredBy": ["INSPIRE", "CCMM"],
+      "filledBy": "dspace",
+      "repeatable": false,
+      "input": "none",
+      "pattern": "https?://[^\\s]+"
+    },
+    {
+      "id": "handle",
+      "key": "dc.identifier.uri",
+      "label": {"en": "Handle URL", "cs": "Adresa handle"},
+      "hint": {"en": "Written by DSpace.", "cs": "Zapisuje DSpace."},
+      "required": true,
+      "requiredBy": ["INSPIRE", "CCMM"],
+      "filledBy": "dspace",
+      "repeatable": false,
+      "input": "none",
+      "pattern": "https?://[^\\s]+"
+    },
+    {
+      "id": "doi",
+      "key": "dc.identifier.doi",
+      "label": {"en": "DOI", "cs": "DOI"},
+      "hint": {"en": "Written by DSpace when it registers the DOI with DataCite.", "cs": "Zapisuje DSpace při registraci DOI u DataCite."},
+      "required": true,
+      "requiredBy": ["DataCite"],
+      "filledBy": "dspace",
+      "repeatable": false,
+      "input": "none",
+      "pattern": "https://doi\\.org/10\\.[0-9]{4,9}/[^\\s]+"
+    }
+  ]
+}

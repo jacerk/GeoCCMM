@@ -1,0 +1,13 @@
+# GeoCCMM Core: lines for [dspace]/config/local.cfg (see dspace/README.md).
+
+# DataCite metadata comes from the GeoCCMM stylesheet.
+crosswalk.dissemination.DataCite.stylesheet = crosswalks/DIM2DataCite-geoccmm.xsl
+crosswalk.dissemination.DataCite.schemaLocation = http://datacite.org/schema/kernel-4 https://schema.datacite.org/meta/kernel-4.6/metadata.xsd
+crosswalk.dissemination.DataCite.namespace = http://datacite.org/schema/kernel-4
+# The stylesheet writes the publisher itself; keep this line the same as in the stylesheet.
+crosswalk.dissemination.DataCite.publisher = Your institution
+
+# Your DataCite repository account. Test first with your own prefix on DataCite Fabrica Test.
+identifier.doi.prefix = 10.XXXX
+identifier.doi.user = YOUR-DATACITE-REPOSITORY-ID
+identifier.doi.password = YOUR-DATACITE-PASSWORD

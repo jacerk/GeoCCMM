@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resource xmlns="http://datacite.org/schema/kernel-4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://datacite.org/schema/kernel-4 https://schema.datacite.org/meta/kernel-4.6/metadata.xsd">
+  <identifier identifierType="DOI">10.5072/geoccmm-vyjizdka-2021</identifier>
+  <creators>
+    <creator>
+      <creatorName nameType="Personal">Svobodová, Klára</creatorName>
+      <givenName>Klára</givenName>
+      <familyName>Svobodová</familyName>
+    </creator>
+    <creator>
+      <creatorName nameType="Personal">Dvořák, Tomáš</creatorName>
+      <givenName>Tomáš</givenName>
+      <familyName>Dvořák</familyName>
+    </creator>
+  </creators>
+  <titles>
+    <title xml:lang="cs">Vyjížďka do zaměstnání z obcí Středočeského kraje podle sčítání 2021</title>
+  </titles>
+  <publisher>Example University, Map and Data Centre</publisher>
+  <publicationYear>2025</publicationYear>
+  <resourceType resourceTypeGeneral="Dataset">Dataset</resourceType>
+  <subjects>
+    <subject subjectScheme="OECD FORD Subject Category (Frascati)" schemeURI="https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/" valueURI="https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50701" classificationCode="50701" xml:lang="en">Cultural and economic geography</subject>
+    <subject subjectScheme="OECD FORD Subject Category (Frascati)" schemeURI="https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/" valueURI="https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/50000/50700/50703" classificationCode="50703" xml:lang="en">Transport planning and social aspects of transport</subject>
+    <subject subjectScheme="GEMET - INSPIRE themes, version 1.0" schemeURI="http://www.eionet.europa.eu/gemet/inspire_themes" valueURI="http://inspire.ec.europa.eu/theme/pd" xml:lang="en">Population distribution — demography</subject>
+    <subject subjectScheme="GEMET - INSPIRE themes, version 1.0" schemeURI="http://www.eionet.europa.eu/gemet/inspire_themes" valueURI="http://inspire.ec.europa.eu/theme/su" xml:lang="en">Statistical units</subject>
+    <subject subjectScheme="GEMET - Concepts, version 4.2.3" schemeURI="http://www.eionet.europa.eu/gemet/concept/" valueURI="http://www.eionet.europa.eu/gemet/concept/1623" xml:lang="cs">dojíždění</subject>
+    <subject xml:lang="cs">vyjížďka do zaměstnání</subject>
+    <subject xml:lang="cs">suburbanizace</subject>
+    <subject xml:lang="cs">SLDB 2021</subject>
+  </subjects>
+  <dates>
+    <date dateType="Created">2025-09-15</date>
+    <date dateType="Issued">2025-10-01</date>
+    <date dateType="Coverage">2021-03-26/2021-03-27</date>
+  </dates>
+  <language>cs</language>
+  <alternateIdentifiers>
+    <alternateIdentifier alternateIdentifierType="URL">http://hdl.handle.net/123456789/57</alternateIdentifier>
+  </alternateIdentifiers>
+  <relatedIdentifiers>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsDocumentedBy">https://data.example.org/docs/vyjizdka-2021-ciselniky.pdf</relatedIdentifier>
+  </relatedIdentifiers>
+  <sizes>
+    <size>2318456 bytes</size>
+  </sizes>
+  <formats>
+    <format>CSV</format>
+  </formats>
+  <rightsList>
+    <rights rightsURI="https://data.example.org/licences/research-only">Licence pro výzkumné užití</rights>
+    <rights rightsURI="http://purl.org/coar/access_right/c_16ec">Restricted access</rights>
+  </rightsList>
+  <descriptions>
+    <description descriptionType="Abstract" xml:lang="cs">Tabulky vyjížďky do zaměstnání z obcí Středočeského kraje do Prahy a do dalších obcí podle Sčítání lidu, domů a bytů 2021. Pro každou dvojici obcí uvádějí počet vyjíždějících podle pohlaví a způsobu dopravy. Hodí se ke studiu suburbanizace a dojížďkových regionů.</description>
+    <description descriptionType="Methods" xml:lang="cs">Sestaveno z otevřených dat Českého statistického úřadu o vyjížďce ze Sčítání lidu, domů a bytů 2021. Vybrány byly toky z obcí Středočeského kraje s nejméně deseti vyjíždějícími, menší toky jsou sloučeny do položky „ostatní“. Kódy obcí odpovídají číselníku obcí platnému k 1. 1. 2021.</description>
+  </descriptions>
+  <geoLocations>
+    <geoLocation>
+      <geoLocationPlace>Středočeský kraj</geoLocationPlace>
+    </geoLocation>
+    <geoLocation>
+      <geoLocationPlace>Praha</geoLocationPlace>
+    </geoLocation>
+    <geoLocation>
+      <geoLocationBox>
+        <westBoundLongitude>13.40</westBoundLongitude>
+        <eastBoundLongitude>15.53</eastBoundLongitude>
+        <southBoundLatitude>49.53</southBoundLatitude>
+        <northBoundLatitude>50.72</northBoundLatitude>
+      </geoLocationBox>
+    </geoLocation>
+  </geoLocations>
+  <fundingReferences>
+    <fundingReference>
+      <funderName>Grantová agentura České republiky</funderName>
+      <funderIdentifier funderIdentifierType="Crossref Funder ID">https://doi.org/10.13039/501100001824</funderIdentifier>
+    </fundingReference>
+  </fundingReferences>
+</resource>
